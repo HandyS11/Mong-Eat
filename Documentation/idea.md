@@ -1,16 +1,20 @@
-# Mongol-eat
+# Mong-eat
+
+**OUT DATED** pls refer to the read me
 
 ## Collections
 
 ```mongodb
-Shops {
+Restaurants {
 	_id: ObjectId,
 	name: string,
 	image: string,
-	category: {
-		name: string,
-		image: string
-	},
+	categories: [ 
+		{
+			name: string,
+			image: string
+		}
+	],
 	rate: double,
 	location: {
 		point: {
@@ -24,12 +28,6 @@ Shops {
 			road: string
 		}
 	}
-}
-
-Categories {
-	_id: ObjectId,
-	name: string,
-	image: string
 }
 
 Articles {
@@ -46,15 +44,8 @@ Orders {
 	reduction: double,
 	fee: double,
 	price: double,
-	articles: [Articles],
+	articles: [Articles._id],
 	owner: Users._id
-
-}
-
-Users {
-	_id: ObjectId,
-	firstname: string,
-	lastname: string,
 	location: {
 		point: {
 			x: double,
@@ -66,6 +57,26 @@ Users {
 			city: string,
 			road: string
 		}
-	}	
+	}
+}
+
+Users {
+	_id: ObjectId,
+	firstname: string,
+	lastname: string,
+	location: [
+		{
+			point: {
+				x: double,
+				y: double
+			},
+			address: {
+				country: string,	
+				code: int,
+				city: string,
+				road: string
+			}
+		}
+	]	
 }
 ```

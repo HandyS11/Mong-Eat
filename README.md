@@ -14,7 +14,7 @@
 
 ### Collections
 
-> Find the database collections description [here](./Documentation/Database/CDM.md).
+> Find the database collections description [here](./Documentation/Database/Collections.md).
 
 ### CDM
 

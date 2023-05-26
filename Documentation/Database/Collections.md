@@ -4,9 +4,9 @@ Detailled list of all the collection use in the database.
 
 > Please note that a CDM is available [here](./CDM.md).
 
-#### Restaurant
+#### Restaurants
 ```mongodb
-Restaurant {
+Restaurants {
 	_id: ObjectId,
 	name: string,
 	image: string,

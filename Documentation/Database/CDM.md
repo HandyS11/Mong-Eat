@@ -1,6 +1,8 @@
 ## CDM Explainations
 
-Quick explanations of the **CDM**, please not that the *Mongo collections* are detailled in the main [read me](../../README.md).
+Quick explanations of the **CDM**
+
+> Please note that the *Mongo collections* are available [here](./Collections.md).
 
 ### CDM
 

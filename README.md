@@ -14,7 +14,7 @@
 
 ### Installation
 
-Aller dans le dossier Documentation/Database/Stub et exécuter la commander suivante.
+Go in Documentation/Database/Stub and run the commande:
 
 ```bash
 mongosh --file install.js

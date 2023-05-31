@@ -12,6 +12,14 @@
 
 ## MongoDB
 
+### Installation
+
+Aller dans le dossier Documentation/Database/Stub et exécuter la commander suivante.
+
+```bash
+mongosh --file loadMovies.js
+```
+
 ### Collections
 
 > Find the database collections description [here](./Documentation/Database/Collections.md).

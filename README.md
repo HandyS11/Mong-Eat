@@ -17,7 +17,7 @@
 Aller dans le dossier Documentation/Database/Stub et exécuter la commander suivante.
 
 ```bash
-mongosh --file loadMovies.js
+mongosh --file install.js
 ```
 
 ### Collections

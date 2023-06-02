@@ -11,7 +11,7 @@ Restaurants {
 	name: string,
 	image: string,
     rate: double,
-	articles: [Articles._id]
+	articles: [Articles._id],
 	categories: [ 
 		{
 			name: string,
@@ -68,7 +68,7 @@ Orders {
 	reduction: double,
 	fee: double,
 	articles: [Articles._id],
-	owner: Users._id
+	owner: Users._id,
 	location: {
 		point: {
 			x: double,

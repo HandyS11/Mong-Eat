@@ -12,12 +12,20 @@
 
 ## MongoDB
 
-### Installation
+### Getting Started
 
-Go in Documentation/Database/Stub and run the commande:
+Make your way to the `./Documentation/Database/Stub` folder and type:
 
 ```bash
 mongosh --file install.js
+```
+
+> We assume that you already have installed the mongosh bash and add it's path to your OS "global path".
+
+This script contains the defaut database path, please edit it if your configuration is different.
+
+```js
+db = connect('mongodb://localhost:27017/MongEat')
 ```
 
 ### Collections

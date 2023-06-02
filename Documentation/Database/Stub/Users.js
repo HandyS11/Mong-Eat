@@ -1,6 +1,6 @@
-[
+export const UsersStub = [
     {
-        "_id":"647063c7e4314fe5feca99f2",
+        "_id": ObjectId("647063c7e4314fe5feca99f2"),
         "firstname": "Valentin",
         "lastname": "Clergue",
         "location": [
@@ -18,7 +18,7 @@
         ]
     },
     {
-        "_id":"647063cc67e91803a0f73cc6",
+        "_id": ObjectId("647063cc67e91803a0f73cc6"),
         "firstname": "Mathis",
         "lastname": "Ribémont",
         "location": [
@@ -36,7 +36,7 @@
         ]
     },
     {
-        "_id":"647063e6e6de03f52dff3590",
+        "_id": ObjectId("647063e6e6de03f52dff3590"),
         "firstname": "Benjamin",
         "lastname": "Valleix",
         "location": [
@@ -54,7 +54,7 @@
         ]
     },
     {
-        "_id":"6470641c251dad7b4fc1dc00",
+        "_id": ObjectId("6470641c251dad7b4fc1dc00"),
         "firstname": "Marc",
         "lastname": "Chevaldonné",
         "location": [
@@ -72,7 +72,7 @@
         ]
     },
     {
-        "_id":"6470645ef433da93dfbdc88b",
+        "_id": ObjectId("6470645ef433da93dfbdc88b"),
         "firstname": "Yohan",
         "lastname": "Breuil",
         "location": [

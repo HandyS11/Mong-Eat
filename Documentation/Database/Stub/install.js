@@ -1,20 +1,21 @@
+const { ArticlesStub } = require('./Articles')
+const { UsersStub } = require('./Users')
+const { RestaurantsStub } = require('./Restaurants')
+const { OrdersStub } = require('./Orders')
+
 db = connect('mongodb://localhost:27017/MongEat')
 db.dropDatabase()
 
-const articlesStub = require('./Articles.json')
 print('Inserting articles...')
-db.Articles.insertMany(articlesStub)
+db.Articles.insertMany(ArticlesStub)
 
-const usersStub = require('./users.json')
 print('Inserting users...')
-db.Users.insertMany(usersStub)
+db.Users.insertMany(UsersStub)
 
-const ordersStub = require('./Orders.json')
-// print('Inserting orders...')
-// db.Orders.insertMany(ordersStub)
+print('Inserting restaurants...')
+db.Restaurant.insertMany(RestaurantsStub)
 
-const restaurantsStub = require('./Restaurants.json')
-// print('Inserting restaurants...')
-// db.Restaurant.insertMany(restaurantsStub)
+print('Inserting orders...')
+db.Orders.insertMany(OrdersStub)
 
 print('Installation finished')

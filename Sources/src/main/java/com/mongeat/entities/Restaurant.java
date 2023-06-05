@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Restaurant {
+public class Restaurant extends GenericEntity {
     @NonNull
     private String name;
     @NonNull
@@ -17,20 +17,23 @@ public class Restaurant {
     @NonNull
     private double rate;
 
+    @NonNull
     private List<String> articles = new ArrayList<>();
+    @NonNull
     private List<Category> categories = new ArrayList<>();
+    @NonNull
     private Location location;
 
-    public Restaurant(String name, String image, double rate) {
+    public Restaurant(String name, String image, double rate, Location location) {
         this.name = name;
         this.image = image;
         this.rate = rate;
+        this.location = location;
     }
 
     public Restaurant(String name, String image, double rate, List<String> articles, List<Category> categories, Location location) {
-        this(name, image, rate);
+        this(name, image, rate, location);
         this.articles.addAll(articles);
         this.categories.addAll(categories);
-        this.location = location;
     }
 }

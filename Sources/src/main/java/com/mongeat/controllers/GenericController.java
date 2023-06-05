@@ -73,10 +73,73 @@ public abstract class GenericController<T extends GenericEntity> {
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateOne(@PathParam("id") String id, T entity) {
+    public Response update(@PathParam("id") String id, T entity) {
         try {
             service.update(entity);
             return Response.ok(entity).build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@PathParam("id") String id) {
+        try {
+            service.delete(service.getById(id));
+            return Response.ok().build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @DELETE
+    public Response deleteAll() {
+        try {
+            service.deleteAll(service.getAll());
+            return Response.ok().build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @DELETE
+    @Path("/drop")
+    public Response drop() {
+        try {
+            service.drop();
+            return Response.ok().build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @GET
+    @Path("/exists/{id}")
+    public Response exists(@PathParam("id") String id) {
+        try {
+            service.exists(id);
+            return Response.ok().build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @GET
+    @Path("/count")
+    public Response getCount() {
+        try {
+            return Response.ok(service.getCount()).build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)
                            .entity(e.getMessage())

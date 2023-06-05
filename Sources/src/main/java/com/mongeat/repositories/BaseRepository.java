@@ -60,10 +60,6 @@ public abstract class BaseRepository<T extends GenericEntity> {
         }
     }
 
-    public void drop() {
-        getCollection().drop();
-    }
-
     public boolean exists(String id) {
         Document query = new Document("_id", new ObjectId(id));
         return getCollection().countDocuments(query) > 0;

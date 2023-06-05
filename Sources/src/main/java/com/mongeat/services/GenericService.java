@@ -2,14 +2,13 @@ package com.mongeat.services;
 
 import com.mongeat.entities.GenericEntity;
 import com.mongeat.repositories.BaseRepository;
-import io.smallrye.common.constraint.NotNull;
 import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.Collection;
 
 @Setter
-public class GenericService<T extends GenericEntity> {
+public abstract class GenericService<T extends GenericEntity> {
     @NonNull
     protected BaseRepository<T> repository;
 

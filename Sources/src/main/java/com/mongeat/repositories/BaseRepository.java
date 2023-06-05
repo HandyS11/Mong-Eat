@@ -29,7 +29,15 @@ public abstract class BaseRepository<T extends GenericEntity> {
         return getCollection().find().into(new ArrayList<>());
     }
 
-    public void insertOrUpdate(T entity) {
+    public void insert(T entity) {
+        getCollection().insertOne(entity);
+    }
+
+    public void insertAll(Collection<T> entities) {
+        getCollection().insertMany(new ArrayList<>(entities));
+    }
+
+    public void Update(T entity) {
         getCollection().replaceOne(
                 eq("_id", new ObjectId(entity.getId())),
                 entity,
@@ -38,7 +46,7 @@ public abstract class BaseRepository<T extends GenericEntity> {
 
     public void insertOrUpdateAll(Collection<T> entities) {
         for (T entity : entities) {
-            insertOrUpdate(entity);
+            Update(entity);
         }
     }
 
@@ -46,8 +54,22 @@ public abstract class BaseRepository<T extends GenericEntity> {
         getCollection().deleteOne(eq("_id", new ObjectId(entity.getId())));
     }
 
+    public void deleteAll(Collection<T> entities) {
+        for (T entity : entities) {
+            delete(entity);
+        }
+    }
+
+    public void drop() {
+        getCollection().drop();
+    }
+
     public boolean exists(String id) {
         Document query = new Document("_id", new ObjectId(id));
         return getCollection().countDocuments(query) > 0;
+    }
+
+    public long count() {
+        return getCollection().countDocuments();
     }
 }

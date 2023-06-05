@@ -16,6 +16,7 @@ public class User extends GenericEntity {
     private String firstName;
     @NonNull
     private String lastName;
+    @NonNull
     private List<Location> location = new ArrayList<>();
 
     public User(String firstName, String lastName) {

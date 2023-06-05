@@ -2,15 +2,16 @@ package com.mongeat.controllers;
 
 import com.mongeat.entities.GenericEntity;
 import com.mongeat.services.GenericService;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.util.Collection;
+
 @Setter
-public class GenericController<T extends GenericEntity> {
+public abstract class GenericController<T extends GenericEntity> {
     @NonNull
     protected GenericService<T> service;
 
@@ -37,5 +38,49 @@ public class GenericController<T extends GenericEntity> {
     @GET
     public Response getAll() {
         return Response.ok(service.getAll()).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response insert(T entity) {
+        try {
+            T newEntity = service.insert(entity);
+            return Response.status(Response.Status.CREATED)
+                           .entity(newEntity)
+                           .build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response insertAll(Collection<T> entities) {
+        try {
+            service.insertAll(entities);
+            return Response.status(Response.Status.CREATED)
+                           .entity(entities)
+                           .build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateOne(@PathParam("id") String id, T entity) {
+        try {
+            service.update(entity);
+            return Response.ok(entity).build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
     }
 }

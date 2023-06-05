@@ -2,6 +2,7 @@ package com.mongeat.services;
 
 import com.mongeat.entities.GenericEntity;
 import com.mongeat.repositories.BaseRepository;
+import io.smallrye.common.constraint.NotNull;
 import lombok.NonNull;
 import lombok.Setter;
 
@@ -20,12 +21,14 @@ public class GenericService<T extends GenericEntity> {
         return repository.getAll();
     }
 
-    public void insert(T entity) {
+    public T insert(T entity) {
         repository.insert(entity);
+        return entity;
     }
 
-    public void insertAll(Collection<T> entities) {
+    public Collection<T> insertAll(Collection<T> entities) {
         repository.insertAll(entities);
+        return entities;
     }
 
     public void update(T entity) {

@@ -19,7 +19,7 @@ public abstract class BaseRepository<T extends GenericEntity> {
 
     public MongoDatabase database = MongoClients.create(CONNECTION_STRING).getDatabase(DB_NAME);
 
-    protected abstract MongoCollection<T> getCollection();
+    public abstract MongoCollection<T> getCollection();
 
     public T findById(String id) {
         return getCollection().find(eq("_id", new ObjectId(id))).first();
@@ -37,16 +37,16 @@ public abstract class BaseRepository<T extends GenericEntity> {
         getCollection().insertMany(new ArrayList<>(entities));
     }
 
-    public void Update(T entity) {
+    public void update(T entity) {
         getCollection().replaceOne(
                 eq("_id", new ObjectId(entity.getId())),
                 entity,
                 new ReplaceOptions().upsert(true));
     }
 
-    public void insertOrUpdateAll(Collection<T> entities) {
+    public void updateAll(Collection<T> entities) {
         for (T entity : entities) {
-            Update(entity);
+            update(entity);
         }
     }
 

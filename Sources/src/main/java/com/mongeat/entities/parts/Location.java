@@ -1,4 +1,4 @@
-package com.mongeat.entities;
+package com.mongeat.entities.parts;
 
 import lombok.Getter;
 import lombok.NonNull;

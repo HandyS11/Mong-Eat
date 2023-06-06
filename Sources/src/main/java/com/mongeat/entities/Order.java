@@ -1,11 +1,13 @@
 package com.mongeat.entities;
 
+import com.mongeat.entities.parts.Location;
 import lombok.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order extends GenericEntity {
+    public static final String COLLECTION_NAME = "orders";
     @NonNull
     private String status;
     @NonNull

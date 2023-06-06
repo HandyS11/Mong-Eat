@@ -9,7 +9,6 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/orders")
-@Produces(MediaType.APPLICATION_JSON)
 public class OrderController extends GenericController<Order> {
 
     @Inject

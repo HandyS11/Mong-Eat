@@ -2,15 +2,16 @@ package com.mongeat.services;
 
 import com.mongeat.entities.GenericEntity;
 import com.mongeat.repositories.BaseRepository;
-import lombok.NonNull;
-import lombok.Setter;
 
 import java.util.Collection;
 
-@Setter
 public abstract class GenericService<T extends GenericEntity> {
-    @NonNull
+
     protected BaseRepository<T> repository;
+
+    public void setRepository(BaseRepository<T> repository) {
+        this.repository = repository;
+    }
 
     public T getById(String id) {
         return repository.findById(id);

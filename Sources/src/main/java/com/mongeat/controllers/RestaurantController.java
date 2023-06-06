@@ -9,7 +9,6 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/users")
-@Produces(MediaType.APPLICATION_JSON)
 public class RestaurantController extends GenericController<Restaurant> {
 
     @Inject

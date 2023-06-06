@@ -17,6 +17,7 @@ public abstract class GenericController<T extends GenericEntity> {
 
     @GET
     @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") String id) {
         try {
             T entity = service.getById(id);
@@ -36,6 +37,7 @@ public abstract class GenericController<T extends GenericEntity> {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         return Response.ok(service.getAll()).build();
     }
@@ -124,6 +126,7 @@ public abstract class GenericController<T extends GenericEntity> {
 
     @GET
     @Path("/exists/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response exists(@PathParam("id") String id) {
         try {
             service.exists(id);
@@ -137,6 +140,7 @@ public abstract class GenericController<T extends GenericEntity> {
 
     @GET
     @Path("/count")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getCount() {
         try {
             return Response.ok(service.getCount()).build();

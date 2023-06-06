@@ -24,15 +24,16 @@ public class Restaurant extends GenericEntity {
     @NonNull
     private Location location;
 
-    public Restaurant(String name, String image, double rate, Location location) {
+    public Restaurant(String id, String name, String image, double rate, Location location) {
+        super(id);
         this.name = name;
         this.image = image;
         this.rate = rate;
         this.location = location;
     }
 
-    public Restaurant(String name, String image, double rate, List<String> articles, List<Category> categories, Location location) {
-        this(name, image, rate, location);
+    public Restaurant(String id, String name, String image, double rate, List<String> articles, List<Category> categories, Location location) {
+        this(id, name, image, rate, location);
         this.articles.addAll(articles);
         this.categories.addAll(categories);
     }

@@ -26,7 +26,8 @@ public class Order extends GenericEntity {
     @NonNull
     private Location location;
 
-    public Order(String status, double price, double tip, double reduction, double fee, String owner, Location location) {
+    public Order(String id, String status, double price, double tip, double reduction, double fee, String owner, Location location) {
+        super(id);
         this.status = status;
         this.price = price;
         this.tip = tip;
@@ -36,8 +37,8 @@ public class Order extends GenericEntity {
         this.location = location;
     }
 
-    public Order(String status, double price, double tip, double reduction, double fee, List<String> articles, String owner, Location location) {
-        this(status, price, tip, reduction, fee, owner, location);
+    public Order(String id, String status, double price, double tip, double reduction, double fee, List<String> articles, String owner, Location location) {
+        this(id, status, price, tip, reduction, fee, owner, location);
         this.articles.addAll(articles);
     }
 }

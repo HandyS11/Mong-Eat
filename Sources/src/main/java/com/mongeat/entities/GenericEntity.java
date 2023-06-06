@@ -12,6 +12,10 @@ public abstract class GenericEntity {
     @BsonId
     private String id;
 
+    public GenericEntity(String id) {
+        this.id = id;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id);

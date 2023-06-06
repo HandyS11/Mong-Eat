@@ -20,13 +20,14 @@ public class User extends GenericEntity {
     @NonNull
     private List<Location> location = new ArrayList<>();
 
-    public User(String firstName, String lastName) {
+    public User(String id, String firstName, String lastName) {
+        super(id);
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public User(String firstName, String lastName, List<Location> location) {
-        this(firstName, lastName);
+    public User(String id, String firstName, String lastName, List<Location> location) {
+        this(id, firstName, lastName);
         this.location.addAll(location);
     }
 }

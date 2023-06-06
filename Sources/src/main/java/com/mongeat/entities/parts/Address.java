@@ -1,4 +1,4 @@
-package com.mongeat.entities;
+package com.mongeat.entities.parts;
 
 import lombok.Getter;
 import lombok.NonNull;
@@ -8,9 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Point {
+public class Address {
     @NonNull
-    private String x;
+    private String country;
     @NonNull
-    private String y;
+    private String city;
+    @NonNull
+    private String road;
 }

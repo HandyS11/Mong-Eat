@@ -10,7 +10,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class Point {
     @NonNull
-    private String x;
+    private Double x;
     @NonNull
-    private String y;
+    private Double y;
 }

@@ -109,6 +109,7 @@ public abstract class GenericController<T extends GenericEntity> {
     }
 
     @DELETE
+    @Path("/all")
     public Response deleteAll() {
         try {
             service.deleteAll(service.getAll());

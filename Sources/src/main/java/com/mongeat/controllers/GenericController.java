@@ -38,9 +38,16 @@ public abstract class GenericController<T extends GenericEntity> {
     }
 
     @GET
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         return Response.ok(service.getAll()).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPaginated(@PathParam("page") int page, @PathParam("limit") int limit) {
+        return Response.ok(service.getPaginated(page, limit)).build();
     }
 
     @POST

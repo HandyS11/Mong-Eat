@@ -21,6 +21,10 @@ public abstract class GenericService<T extends GenericEntity> {
         return repository.getAll();
     }
 
+    public Collection<T> getPaginated(int page, int limit) {
+        return repository.getPaginated(page, limit);
+    }
+
     public T insert(T entity) {
         repository.insert(entity);
         return entity;

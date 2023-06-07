@@ -1,19 +1,20 @@
 package com.mongeat.entities;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.bson.codecs.pojo.annotations.BsonId;
+import org.bson.types.ObjectId;
 
 import java.util.Objects;
 
-@Getter
-@Setter
 public abstract class GenericEntity {
     @BsonId
-    private String id;
+    private final ObjectId id;
 
     public GenericEntity(String id) {
-        this.id = id;
+        this.id = new ObjectId(id);
+    }
+
+    public String getId() {
+        return id.toHexString();
     }
 
     @Override

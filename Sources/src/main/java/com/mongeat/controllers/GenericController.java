@@ -6,14 +6,15 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.NonNull;
-import lombok.Setter;
 
 import java.util.Collection;
 
-@Setter
 public abstract class GenericController<T extends GenericEntity> {
-    @NonNull
     protected GenericService<T> service;
+
+    public void setService(@NonNull GenericService<T> service) {
+        this.service = service;
+    }
 
     @GET
     @Path("/{id}")
@@ -58,6 +59,7 @@ public abstract class GenericController<T extends GenericEntity> {
     }
 
     @POST
+    @Path("/all")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response insertAll(Collection<T> entities) {
         try {

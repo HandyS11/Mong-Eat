@@ -8,7 +8,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/users")
+@Path("/restaurants")
 public class RestaurantController extends GenericController<Restaurant> {
 
     @Inject

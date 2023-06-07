@@ -4,7 +4,9 @@ import com.mongeat.entities.User;
 import com.mongeat.repositories.UserRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 
+@Singleton
 public class UserService extends GenericService<User> {
 
     @Inject

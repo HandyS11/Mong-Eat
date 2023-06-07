@@ -2,7 +2,9 @@ package com.mongeat.repositories;
 
 import com.mongeat.entities.User;
 import com.mongodb.client.MongoCollection;
+import jakarta.inject.Singleton;
 
+@Singleton
 public class UserRepository extends BaseRepository<User> {
 
     @Override

@@ -1,30 +1,31 @@
 package com.mongeat.entities;
 
 import com.mongeat.entities.parts.Location;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class Order extends GenericEntity {
     public static final String COLLECTION_NAME = "orders";
-    @NonNull
     private String status;
-    @NonNull
     private double price;
-    @NonNull
     private double tip;
-    @NonNull
     private double reduction;
-    @NonNull
     private double fee;
 
-    @NonNull
     private List<String> articles = new ArrayList<>();
-    @NonNull
     private String owner;
-    @NonNull
     private Location location;
+
+    public Order() {
+        super(new ObjectId().toHexString());
+    }
 
     public Order(String id, String status, double price, double tip, double reduction, double fee, String owner, Location location) {
         super(id);

@@ -4,6 +4,7 @@ import com.mongeat.entities.parts.Location;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +14,13 @@ import java.util.List;
 public class User extends GenericEntity {
     public static final String COLLECTION_NAME = "users";
 
-    @NonNull
     private String firstName;
-    @NonNull
     private String lastName;
-    @NonNull
     private List<Location> location = new ArrayList<>();
+
+    public User() {
+        super(new ObjectId().toHexString());
+    }
 
     public User(String id, String firstName, String lastName) {
         super(id);

@@ -1,11 +1,12 @@
 package com.mongeat.entities;
 
+import org.bson.Document;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
 import java.util.Objects;
 
-public abstract class GenericEntity {
+public abstract class GenericEntity extends Document {
     @BsonId
     private final ObjectId id;
 

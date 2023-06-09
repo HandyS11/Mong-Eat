@@ -1,15 +1,15 @@
 package com.mongeat.services;
 
 import com.mongeat.entities.GenericEntity;
-import com.mongeat.repositories.BaseRepository;
+import com.mongeat.repositories.GenericRepository;
 
 import java.util.Collection;
 
 public abstract class GenericService<T extends GenericEntity> {
 
-    protected BaseRepository<T> repository;
+    protected GenericRepository<T> repository;
 
-    public void setRepository(BaseRepository<T> repository) {
+    public void setRepository(GenericRepository<T> repository) {
         this.repository = repository;
     }
 

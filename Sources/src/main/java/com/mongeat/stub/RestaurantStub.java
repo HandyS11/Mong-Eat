@@ -18,4 +18,8 @@ public class RestaurantStub {
         restaurants.add(restaurant2);
         restaurants.add(restaurant3);
     }
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
 }

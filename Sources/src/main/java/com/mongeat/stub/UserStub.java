@@ -21,4 +21,8 @@ public class UserStub {
         users.add(user4);
         users.add(user5);
     }
+
+    public List<User> getUsers() {
+        return users;
+    }
 }

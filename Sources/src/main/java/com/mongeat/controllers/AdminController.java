@@ -13,10 +13,10 @@ public class AdminController {
     AdminService adminService;
 
     @GET
-    @Path("/stub")
+    @Path("/stub/{entity}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response loadStub() {
-        if (adminService.createStub("all")) {
+    public Response loadStub(@PathParam("entity") String entity) {
+        if (adminService.createStub(entity)) {
             return Response.ok().build();
         }
         return Response.serverError().build();

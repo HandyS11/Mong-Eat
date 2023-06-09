@@ -5,7 +5,7 @@ import com.mongodb.client.MongoCollection;
 import jakarta.inject.Singleton;
 
 @Singleton
-public class RestaurantRepository extends BaseRepository<Restaurant> {
+public class RestaurantRepository extends GenericRepository<Restaurant> {
 
     @Override
     public MongoCollection<Restaurant> getCollection() {

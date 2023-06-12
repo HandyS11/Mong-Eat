@@ -82,9 +82,8 @@ public abstract class GenericController<T extends GenericEntity> {
     }
 
     @PUT
-    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("id") String id, T entity) {
+    public Response update(T entity) {
         try {
             service.update(entity);
             return Response.ok(entity).build();

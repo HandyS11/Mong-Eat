@@ -1,6 +1,6 @@
-package com.mongeat.codex.user;
+package com.mongeat.codec.user;
 
-import com.mongeat.codex.GenericCodec;
+import com.mongeat.codec.GenericCodec;
 import com.mongeat.entities.User;
 import com.mongeat.entities.parts.Location;
 import com.mongodb.MongoClientSettings;

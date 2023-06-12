@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 public class Order extends GenericEntity {
     public static final String COLLECTION_NAME = "orders";
+
     private String status;
     private double price;
     private double tip;

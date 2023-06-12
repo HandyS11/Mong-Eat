@@ -1,6 +1,6 @@
-package com.mongeat.codex.restaurant;
+package com.mongeat.codec.restaurant;
 
-import com.mongeat.codex.GenericCodec;
+import com.mongeat.codec.GenericCodec;
 import com.mongeat.entities.Restaurant;
 import com.mongodb.MongoClientSettings;
 import org.bson.BsonReader;

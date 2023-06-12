@@ -1,6 +1,6 @@
-package com.mongeat.codex.article;
+package com.mongeat.codec.article;
 
-import com.mongeat.codex.GenericCodec;
+import com.mongeat.codec.GenericCodec;
 import com.mongeat.entities.Article;
 import com.mongodb.MongoClientSettings;
 import org.bson.BsonReader;

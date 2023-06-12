@@ -1,17 +1,17 @@
-package com.mongeat.codex.restaurant;
+package com.mongeat.codec.user;
 
-import com.mongeat.entities.Restaurant;
+import com.mongeat.entities.User;
 import com.mongodb.lang.Nullable;
 import org.bson.codecs.Codec;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 
-public class RestaurantCodecProvider implements CodecProvider {
+public class UserCodecProvider implements CodecProvider {
     @Nullable
     @Override
     public <T> Codec<T> get(Class<T> clazz, CodecRegistry registry) {
-        if (clazz.equals(Restaurant.class)) {
-            return (Codec<T>) new RestaurantCodec();
+        if (clazz.equals(User.class)) {
+            return (Codec<T>) new UserCodec();
         }
         return null;
     }

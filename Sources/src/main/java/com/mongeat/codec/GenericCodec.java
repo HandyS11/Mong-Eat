@@ -1,4 +1,4 @@
-package com.mongeat.codex;
+package com.mongeat.codec;
 
 import com.mongeat.entities.GenericEntity;
 import org.bson.*;

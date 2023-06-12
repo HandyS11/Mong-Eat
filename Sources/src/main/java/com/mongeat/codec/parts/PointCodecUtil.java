@@ -1,4 +1,4 @@
-package com.mongeat.codex.parts;
+package com.mongeat.codec.parts;
 
 import com.mongeat.entities.parts.Point;
 import org.bson.Document;

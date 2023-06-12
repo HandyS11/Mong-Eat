@@ -1,6 +1,8 @@
 package com.mongeat.codec.restaurant;
 
 import com.mongeat.codec.GenericCodec;
+import com.mongeat.codec.parts.CategoryCodecUtil;
+import com.mongeat.codec.parts.LocationCodecUtil;
 import com.mongeat.entities.Restaurant;
 import com.mongodb.MongoClientSettings;
 import org.bson.BsonReader;
@@ -11,6 +13,9 @@ import org.bson.codecs.DecoderContext;
 import org.bson.codecs.EncoderContext;
 import org.bson.types.ObjectId;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class RestaurantCodec extends GenericCodec<Restaurant> {
     private final Codec<Document> documentCodec;
 
@@ -19,16 +24,16 @@ public class RestaurantCodec extends GenericCodec<Restaurant> {
     }
 
     @Override
-    public void encode(BsonWriter writer, Restaurant entity, EncoderContext encoderContext) {
+    public void encode(BsonWriter writer, Restaurant restaurant, EncoderContext encoderContext) {
         Document doc = new Document();
 
-        doc.put("_id", new ObjectId(entity.getId()));
-        doc.put("name", entity.getName());
-        doc.put("image", entity.getImage());
-        doc.put("rate", entity.getRate());
-        //TODO: add articles ids
-        //TODO: add category
-        //TOTO: add locations
+        doc.put("_id", new ObjectId(restaurant.getId()));
+        doc.put("name", restaurant.getName());
+        doc.put("image", restaurant.getImage());
+        doc.put("rate", restaurant.getRate());
+        doc.put("articles", restaurant.getArticles().stream().map(ObjectId::new).collect(Collectors.toList()));
+        doc.put("categories", restaurant.getCategories().stream().map(CategoryCodecUtil::insertCategory).collect(Collectors.toList()));
+        doc.put("location", LocationCodecUtil.insertLocation(restaurant.getLocation()));
     }
 
     @Override
@@ -46,9 +51,18 @@ public class RestaurantCodec extends GenericCodec<Restaurant> {
         restaurant.setName(document.getString("name"));
         restaurant.setImage(document.getString("image"));
         restaurant.setRate(document.getDouble("rate"));
-        //TODO: add articles ids
-        //TODO: add category
-        //TOTO: add locations
+
+        List<String> articlesId = document.getList("articles", ObjectId.class)
+                .stream()
+                .map(ObjectId::toString)
+                .collect(Collectors.toList());
+        restaurant.setArticles(articlesId);
+
+        List<Document> categories = document.getList("categories", Document.class);
+        restaurant.setCategories(categories.stream().map(CategoryCodecUtil::extractCategory).collect(Collectors.toList()));
+
+        Document location = (Document) document.get("location");
+        restaurant.setLocation(LocationCodecUtil.extractLocation(location));
 
         return restaurant;
     }

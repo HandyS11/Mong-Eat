@@ -12,4 +12,13 @@ public class CategoryCodecUtil {
 
         return c;
     }
+
+    public static Document insertCategory(Category c) {
+        Document cat = new Document();
+
+        cat.put("name", c.getName());
+        cat.put("image", c.getImage());
+
+        return cat;
+    }
 }

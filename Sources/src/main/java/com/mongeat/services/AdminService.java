@@ -40,7 +40,7 @@ public class AdminService extends BaseRepository {
     }
 
     public boolean createStub(String type) {
-        try {
+        /*try {
             switch (type) {
                 case "all": {
                     database.getCollection(Article.COLLECTION_NAME).insertMany(new ArticleStub().getArticles());
@@ -69,6 +69,7 @@ public class AdminService extends BaseRepository {
             return true;
         } catch (Exception e) {
             return false;
-        }
+        }*/
+        return false;
     }
 }

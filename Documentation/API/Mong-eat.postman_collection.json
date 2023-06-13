@@ -1,0 +1,900 @@
+{
+	"info": {
+		"_postman_id": "b0d4013a-0947-4724-85f6-c19e30ff62cd",
+		"name": "Mong-eat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25225203"
+	},
+	"item": [
+		{
+			"name": "Article",
+			"item": [
+				{
+					"name": "GetWithId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}?id=\"aaaaa\"",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "\"aaaaa\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPaginated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}?page=0&limit=3",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEntities",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n\r\n    },\r\n    {\r\n        \r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutEntities",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteWithId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/64705dda1fe1d56fab1b17b2",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}",
+								"64705dda1fe1d56fab1b17b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAll",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/exists/64705dcabd367e78ccaddbe0",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}",
+								"exists",
+								"64705dcabd367e78ccaddbe0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/count",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "GetWithId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}?id=\"aaaaa\"",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "\"aaaaa\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPaginated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}?page=0&limit=3",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEntities",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n\r\n    },\r\n    {\r\n        \r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutEntities",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteWithId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}/64799a8ec40b7a7aad35ac40",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}",
+								"64799a8ec40b7a7aad35ac40"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAll",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}/exists/64799a8ec40b7a7aad35ac40",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}",
+								"exists",
+								"64799a8ec40b7a7aad35ac40"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}/count",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "GetWithId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/647998cb5c47e8017481fb87\n",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}",
+								"647998cb5c47e8017481fb87\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPaginated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}?page=0&limit=3",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEntities",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n\r\n    },\r\n    {\r\n        \r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutEntities",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteWithId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}/647998cb5c47e8017481fb87",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}",
+								"647998cb5c47e8017481fb87"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAll",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/exists/6479996ed405d82d32828e8d",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}",
+								"exists",
+								"6479996ed405d82d32828e8d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/count",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GetWithId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}/647063c7e4314fe5feca99f2",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}",
+								"647063c7e4314fe5feca99f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPaginated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}?page=0&limit=3",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEntities",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Jean\",\r\n    \"lastname\": \"Kevin\",\r\n    \"locations\": [\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\r\n                \"city\": \"Clermont-Ferrand\",\r\n                \"road\": \"Quelque part\"\r\n            } \r\n        },\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutEntities",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"6470641c251dad7b4fc1dc00\",\r\n    \"firstname\": \"Marc\",\r\n    \"lastname\": \"Chevaldonne\",\r\n    \"locations\": [\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Clermont-Ferrand\",\r\n                \"road\": \"Quelque part\"\r\n            } \r\n        },\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteWithId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}/647063c7e4314fe5feca99f2",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}",
+								"647063c7e4314fe5feca99f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAll",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}/exists/647063cc67e91803a0f73cc6",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}",
+								"exists",
+								"647063cc67e91803a0f73cc6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}/count",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Setup",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/admin/setup",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"admin",
+								"setup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateStubs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/admin/stub/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"admin",
+								"stub",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DropDataBase",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/admin/drop/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"admin",
+								"drop",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ORDER_PATH",
+			"value": "orders",
+			"type": "string"
+		},
+		{
+			"key": "RESTAURANT_PATH",
+			"value": "restaurants",
+			"type": "string"
+		},
+		{
+			"key": "USER_PATH",
+			"value": "users",
+			"type": "string"
+		},
+		{
+			"key": "ARTICLE_PATH",
+			"value": "articles",
+			"type": "string"
+		},
+		{
+			"key": "HOST",
+			"value": "localhost:8080",
+			"type": "string"
+		}
+	]
+}

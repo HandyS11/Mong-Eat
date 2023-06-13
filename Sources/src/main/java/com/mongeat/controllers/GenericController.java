@@ -52,6 +52,7 @@ public abstract class GenericController<T extends GenericEntity> {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response insert(T entity) {
         try {
             T newEntity = service.insert(entity);
@@ -68,11 +69,12 @@ public abstract class GenericController<T extends GenericEntity> {
     @POST
     @Path("/all")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response insertAll(Collection<T> entities) {
         try {
-            service.insertAll(entities);
+            var e = service.insertAll(entities);
             return Response.status(Response.Status.CREATED)
-                           .entity(entities)
+                           .entity(e)
                            .build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)
@@ -83,6 +85,7 @@ public abstract class GenericController<T extends GenericEntity> {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response update(T entity) {
         try {
             service.update(entity);

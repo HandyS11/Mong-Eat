@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantStub {
-    private List<Restaurant> restaurants = new ArrayList<>();
+    private final List<Restaurant> restaurants = new ArrayList<>();
 
     public RestaurantStub() {
         Restaurant restaurant1 = new Restaurant("647998cb5c47e8017481fb87", "Chez patrick", "https://media-cdn.tripadvisor.com/media/photo-s/16/54/07/1c/chez-patrick-un-havre.jpg", 6.5 , List.of("64705dda1fe1d56fab1b17b2"), List.of(new Category("Kebab", "")), LocationStub.location1);

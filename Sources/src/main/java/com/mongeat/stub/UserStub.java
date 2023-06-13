@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserStub {
-    private List<User> users = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
 
     public  UserStub() {
         User user1 = new User("647063c7e4314fe5feca99f2", "Valentin", "Clergue", LocationStub.locations);

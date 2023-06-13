@@ -10,4 +10,4 @@ Quick explanations of the **CDM**
 
 ### Entities description
 
-...
+*__TODO:__ ...*

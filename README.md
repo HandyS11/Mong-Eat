@@ -2,11 +2,22 @@
 
 ...
 
-## Getting started
+## 📝 Purpose
 
 ...
 
-## API
+## 🛠 Languages & tools
+
+![skills](https://skillicons.dev/icons?i=java,mongo,idea)
+
+## 🖊️ Versions 
+
+- [Java SDK](https://www.java.com/): 19
+- [Quarkus](https://quarkus.io): 3
+
+## Quarkus API
+
+### Getting Started
 
 ...
 
@@ -14,19 +25,7 @@
 
 ### Getting Started
 
-Make your way to the `./Documentation/Database/Stub` folder and type:
-
-```bash
-mongosh --file install.js
-```
-
-> We assume that you already have installed the mongosh bash and add it's path to your OS "global path".
-
-This script contains the defaut database path, please edit it if your configuration is different.
-
-```js
-db = connect('mongodb://localhost:27017/MongEat')
-```
+...
 
 ### Collections
 
@@ -35,9 +34,9 @@ db = connect('mongodb://localhost:27017/MongEat')
 ### CDM
 
 > Find a simple CDM [here](./Documentation/Database/CDM.md). 
-> It doesn't fill well with mongo but that can help to understand the objects interractions.
+> It doesn't fill well with mongo but that can help to understand objects interractions.
 
-## Credits
+## ✍️ Credits
 
 * Co-author [Mathis Ribémont](https://github.com/TEDDAC)
 * Co-author [Valentin Clergue](https://github.com/HandyS11)

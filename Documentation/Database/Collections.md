@@ -10,7 +10,7 @@ Restaurants {
 	_id: ObjectId,
 	name: string,
 	image: string,
-    rate: double,
+	rate: double,
 	articles: [Articles._id],
 	categories: [ 
 		{
@@ -64,7 +64,7 @@ Orders {
 	_id: ObjectId,
 	status: string,
 	price: double,
-    tip: double,
+	tip: double,
 	reduction: double,
 	fee: double,
 	articles: [Articles._id],
@@ -135,7 +135,7 @@ Users {
 		country: string,	
 		city: string,
 		road: string
-	}
+	} 
 }
 ```
 **Notes:**

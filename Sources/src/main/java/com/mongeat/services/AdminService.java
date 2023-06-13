@@ -79,4 +79,9 @@ public class AdminService extends BaseRepository {
             return false;
         }
     }
+
+    public boolean setup() {
+        drop("all");
+        return createStub("all");
+    }
 }

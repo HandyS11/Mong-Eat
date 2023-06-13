@@ -14,7 +14,6 @@ public class AdminController {
 
     @GET
     @Path("/stub/{entity}")
-    @Produces(MediaType.APPLICATION_JSON)
     public Response loadStub(@PathParam("entity") String entity) {
         if (adminService.createStub(entity)) {
             return Response.ok().build();
@@ -24,9 +23,18 @@ public class AdminController {
 
     @DELETE
     @Path("/drop/{entity}")
-    @Produces(MediaType.APPLICATION_JSON)
     public Response dropAll(@PathParam("entity") String entity) {
         adminService.drop(entity);
         return Response.ok().build();
+    }
+
+    @GET
+    @Path("setup")
+    public Response setup() {
+        if (adminService.setup()) {
+            return Response.ok().build();
+        } else {
+            return Response.serverError().build();
+        }
     }
 }

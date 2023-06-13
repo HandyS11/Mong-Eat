@@ -27,7 +27,7 @@ public class UserCodec implements Codec<User> {
         doc.put("_id", user.getObjectId());
         doc.put("firstname", user.getFirstName());
         doc.put("lastname", user.getLastName());
-        doc.put("location", user.getLocation().stream().map(LocationCodecUtil::insertLocation).collect(Collectors.toList()));
+        doc.put("locations", user.getLocation().stream().map(LocationCodecUtil::insertLocation).collect(Collectors.toList()));
 
         documentCodec.encode(writer, doc, encoderContext);
     }
@@ -47,7 +47,7 @@ public class UserCodec implements Codec<User> {
         user.setFirstName(document.getString("firstname"));
         user.setLastName(document.getString("lastname"));
 
-        List<Document> locations = document.getList("location", Document.class);
+        List<Document> locations = document.getList("locations", Document.class);
         user.setLocation(locations.stream().map(LocationCodecUtil::extractLocation).collect(Collectors.toList()));
 
         return user;

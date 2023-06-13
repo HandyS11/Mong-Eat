@@ -59,7 +59,7 @@ public abstract class GenericService<T extends GenericEntity> {
         repository.exists(id);
     }
 
-    public double getCount() {
+    public long getCount() {
         return repository.count();
     }
 }

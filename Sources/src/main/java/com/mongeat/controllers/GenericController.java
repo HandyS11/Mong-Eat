@@ -53,23 +53,6 @@ public abstract class GenericController<T extends GenericEntity> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response insert(T entity) {
-        try {
-            T newEntity = service.insert(entity);
-            return Response.status(Response.Status.CREATED)
-                           .entity(newEntity)
-                           .build();
-        } catch (IllegalArgumentException e) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                           .entity(e.getMessage())
-                           .build();
-        }
-    }
-
-    @POST
-    @Path("/all")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response insertAll(Collection<T> entities) {
         try {
             var e = service.insertAll(entities);
@@ -86,10 +69,10 @@ public abstract class GenericController<T extends GenericEntity> {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(T entity) {
+    public Response updateAll(Collection<T> entities) {
         try {
-            service.update(entity);
-            return Response.ok(entity).build();
+            service.updateAll(entities);
+            return Response.ok(entities).build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)
                            .entity(e.getMessage())
@@ -142,7 +125,7 @@ public abstract class GenericController<T extends GenericEntity> {
     public Response exists(@PathParam("id") String id) {
         try {
             service.exists(id);
-            return Response.ok().build();
+            return Response.ok(true).build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)
                            .entity(e.getMessage())

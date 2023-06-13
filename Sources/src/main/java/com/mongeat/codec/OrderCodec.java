@@ -32,7 +32,7 @@ public class OrderCodec implements Codec<Order> {
         doc.put("reduction", order.getReduction());
         doc.put("fee", order.getFee());
         doc.put("articles", order.getArticles().stream().map(ObjectId::new).collect(Collectors.toList()));
-        doc.put("owner", order.getOwner());
+        doc.put("owner", new ObjectId(order.getOwner()));
         doc.put("location", LocationCodecUtil.insertLocation(order.getLocation()));
 
         documentCodec.encode(writer, doc, encoderContext);
@@ -62,7 +62,7 @@ public class OrderCodec implements Codec<Order> {
                 .collect(Collectors.toList());
         order.setArticles(articlesId);
 
-        order.setOwner(document.getString("owner"));
+        order.setOwner(document.getObjectId("owner").toString());
 
         Document location = (Document) document.get("location");
         order.setLocation(LocationCodecUtil.extractLocation(location));

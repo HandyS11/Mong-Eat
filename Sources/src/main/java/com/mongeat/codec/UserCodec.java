@@ -1,6 +1,5 @@
-package com.mongeat.codec.user;
+package com.mongeat.codec;
 
-import com.mongeat.codec.GenericCodec;
 import com.mongeat.codec.parts.LocationCodecUtil;
 import com.mongeat.entities.User;
 import com.mongodb.MongoClientSettings;
@@ -10,12 +9,11 @@ import org.bson.Document;
 import org.bson.codecs.Codec;
 import org.bson.codecs.DecoderContext;
 import org.bson.codecs.EncoderContext;
-import org.bson.types.ObjectId;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UserCodec extends GenericCodec<User> {
+public class UserCodec implements Codec<User> {
     private final Codec<Document> documentCodec;
 
     public UserCodec() {
@@ -26,7 +24,7 @@ public class UserCodec extends GenericCodec<User> {
     public void encode(BsonWriter writer, User user, EncoderContext encoderContext) {
         Document doc = new Document();
 
-        doc.put("_id", new ObjectId(user.getId()));
+        doc.put("_id", user.getObjectId());
         doc.put("firstname", user.getFirstName());
         doc.put("lastname", user.getLastName());
         doc.put("location", user.getLocation().stream().map(LocationCodecUtil::insertLocation).collect(Collectors.toList()));

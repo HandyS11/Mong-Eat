@@ -1,15 +1,15 @@
 package com.mongeat.repositories;
 
-import com.mongeat.codec.article.ArticleCodecProvider;
-import com.mongeat.codec.order.OrderCodecProvider;
-import com.mongeat.codec.restaurant.RestaurantCodecProvider;
-import com.mongeat.codec.user.UserCodecProvider;
+import com.mongeat.codec.ArticleCodec;
+import com.mongeat.codec.OrderCodec;
+import com.mongeat.codec.RestaurantCodec;
+import com.mongeat.codec.UserCodec;
+import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
+import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
-import org.bson.codecs.pojo.PojoCodecProvider;
 
-import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
@@ -20,17 +20,17 @@ public abstract class BaseRepository {
     public final MongoDatabase database;
 
     protected BaseRepository() {
-        CodecRegistry pojoCodecRegistry = fromRegistries(
-                getDefaultCodecRegistry(),
-                fromProviders(PojoCodecProvider.builder().automatic(true).build()),
-                fromProviders(new RestaurantCodecProvider()),
-                fromProviders(new ArticleCodecProvider()),
-                fromProviders(new UserCodecProvider()),
-                fromProviders(new OrderCodecProvider())
-        );
+        CodecRegistry defaultCodecRegistry = MongoClientSettings.getDefaultCodecRegistry();
+        CodecRegistry pojoCodecRegistry = CodecRegistries.fromCodecs(
+                new ArticleCodec(),
+                new OrderCodec(),
+                new RestaurantCodec(),
+                new UserCodec());
+
+        CodecRegistry codecRegistry = CodecRegistries.fromRegistries(defaultCodecRegistry, pojoCodecRegistry);
 
         database = MongoClients.create(CONNECTION_STRING)
                                .getDatabase(DB_NAME)
-                               .withCodecRegistry(pojoCodecRegistry);
+                               .withCodecRegistry(codecRegistry);
     }
 }

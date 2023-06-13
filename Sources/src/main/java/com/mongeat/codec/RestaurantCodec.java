@@ -1,6 +1,5 @@
-package com.mongeat.codec.restaurant;
+package com.mongeat.codec;
 
-import com.mongeat.codec.GenericCodec;
 import com.mongeat.codec.parts.CategoryCodecUtil;
 import com.mongeat.codec.parts.LocationCodecUtil;
 import com.mongeat.entities.Restaurant;
@@ -16,7 +15,7 @@ import org.bson.types.ObjectId;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RestaurantCodec extends GenericCodec<Restaurant> {
+public class RestaurantCodec implements Codec<Restaurant> {
     private final Codec<Document> documentCodec;
 
     public RestaurantCodec() {
@@ -34,6 +33,8 @@ public class RestaurantCodec extends GenericCodec<Restaurant> {
         doc.put("articles", restaurant.getArticles().stream().map(ObjectId::new).collect(Collectors.toList()));
         doc.put("categories", restaurant.getCategories().stream().map(CategoryCodecUtil::insertCategory).collect(Collectors.toList()));
         doc.put("location", LocationCodecUtil.insertLocation(restaurant.getLocation()));
+
+        documentCodec.encode(writer, doc, encoderContext);
     }
 
     @Override

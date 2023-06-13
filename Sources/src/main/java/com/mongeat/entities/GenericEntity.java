@@ -17,6 +17,10 @@ public abstract class GenericEntity {
         return id.toHexString();
     }
 
+    public ObjectId getObjectId() {
+        return id;
+    }
+
     public void setId(String id) {
         this.id = new ObjectId(id);
     }

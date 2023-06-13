@@ -1,6 +1,5 @@
-package com.mongeat.codec.order;
+package com.mongeat.codec;
 
-import com.mongeat.codec.GenericCodec;
 import com.mongeat.codec.parts.LocationCodecUtil;
 import com.mongeat.entities.Order;
 import com.mongodb.MongoClientSettings;
@@ -15,7 +14,7 @@ import org.bson.types.ObjectId;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OrderCodec extends GenericCodec<Order> {
+public class OrderCodec implements Codec<Order> {
     private final Codec<Document> documentCodec;
 
     public OrderCodec() {
@@ -26,7 +25,7 @@ public class OrderCodec extends GenericCodec<Order> {
     public void encode(BsonWriter writer, Order order, EncoderContext encoderContext) {
         Document doc = new Document();
 
-        doc.put("_id", new ObjectId(order.getId()));
+        doc.put("_id", order.getObjectId());
         doc.put("status", order.getStatus());
         doc.put("price", order.getPrice());
         doc.put("tip", order.getTip());

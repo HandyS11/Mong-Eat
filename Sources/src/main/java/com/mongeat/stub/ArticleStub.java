@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleStub {
-    public List<Article> articles = new ArrayList<>();
+    public final List<Article> articles = new ArrayList<>();
 
     public ArticleStub() {
         Article article1 = new Article("64705dcabd367e78ccaddbe0", "HotDog", "https://img-3.journaldesfemmes.fr/EnBOqIbquxzrhd5mUBBcYWxuC6k=/800x600/smart/7f89fdbac0064efd89ffefe57963f5e4/recipe-jdf/10027650.jpg", 4.99);

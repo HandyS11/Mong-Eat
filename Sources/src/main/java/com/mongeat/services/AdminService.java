@@ -10,7 +10,6 @@ import com.mongeat.stub.OrderStub;
 import com.mongeat.stub.RestaurantStub;
 import com.mongeat.stub.UserStub;
 import jakarta.inject.Singleton;
-import org.bson.Document;
 
 @Singleton
 public class AdminService extends BaseRepository {
@@ -37,38 +36,46 @@ public class AdminService extends BaseRepository {
                 database.getCollection(Restaurant.COLLECTION_NAME).drop();
                 break;
             }
+            default: {
+                System.err.println("Unknown type");
+            }
         }
     }
 
     public boolean createStub(String type) {
         try {
-            /*switch (type) {
+            switch (type) {
                 case "all": {
-                    database.getCollection(Article.COLLECTION_NAME).insertMany(new ArticleStub().getArticles());
-                    database.getCollection(User.COLLECTION_NAME).insertMany(new UserStub().getUsers());
-                    database.getCollection(Restaurant.COLLECTION_NAME).insertMany(new RestaurantStub().getRestaurants());
-                    database.getCollection(Order.COLLECTION_NAME).insertMany(new OrderStub().getOrders());
+                    database.getCollection(Article.COLLECTION_NAME, Article.class).insertMany(new ArticleStub().getArticles());
+                    database.getCollection(User.COLLECTION_NAME, User.class).insertMany(new UserStub().getUsers());
+                    database.getCollection(Restaurant.COLLECTION_NAME, Restaurant.class).insertMany(new RestaurantStub().getRestaurants());
+                    database.getCollection(Order.COLLECTION_NAME, Order.class).insertMany(new OrderStub().getOrders());
                     break;
                 }
                 case "articles": {
-                    database.getCollection(Article.COLLECTION_NAME).insertMany(new ArticleStub().getArticles());
+                    database.getCollection(Article.COLLECTION_NAME, Article.class).insertMany(new ArticleStub().getArticles());
                     break;
                 }
                 case "users": {
-                    database.getCollection(User.COLLECTION_NAME).insertMany(new UserStub().getUsers());
+                    database.getCollection(User.COLLECTION_NAME, User.class).insertMany(new UserStub().getUsers());
                     break;
                 }
                 case "restaurants": {
-                    database.getCollection(Restaurant.COLLECTION_NAME).insertMany(new RestaurantStub().getRestaurants());
+                    database.getCollection(Restaurant.COLLECTION_NAME, Restaurant.class).insertMany(new RestaurantStub().getRestaurants());
                     break;
                 }
                 case "orders": {
-                    database.getCollection(Order.COLLECTION_NAME).insertMany(new OrderStub().getOrders());
+                    database.getCollection(Order.COLLECTION_NAME, Order.class).insertMany(new OrderStub().getOrders());
                     break;
                 }
-            }*/
+                default: {
+                    System.err.println("Unknown type");
+                    return false;
+                }
+            }
             return true;
         } catch (Exception e) {
+            System.err.println(e.getMessage());
             return false;
         }
     }

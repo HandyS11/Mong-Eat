@@ -1,6 +1,5 @@
-package com.mongeat.codec.article;
+package com.mongeat.codec;
 
-import com.mongeat.codec.GenericCodec;
 import com.mongeat.entities.Article;
 import com.mongodb.MongoClientSettings;
 import org.bson.BsonReader;
@@ -9,10 +8,9 @@ import org.bson.Document;
 import org.bson.codecs.Codec;
 import org.bson.codecs.DecoderContext;
 import org.bson.codecs.EncoderContext;
-import org.bson.types.ObjectId;
 import org.jetbrains.annotations.NotNull;
 
-public class ArticleCodec extends GenericCodec<Article> {
+public class ArticleCodec implements Codec<Article> {
     private final Codec<Document> documentCodec;
 
     public ArticleCodec() {
@@ -23,7 +21,7 @@ public class ArticleCodec extends GenericCodec<Article> {
     public void encode(BsonWriter writer, @NotNull Article article, EncoderContext encoderContext) {
         Document doc = new Document();
 
-        doc.put("_id", new ObjectId(article.getId()));
+        doc.put("_id", article.getObjectId());
         doc.put("name", article.getName());
         doc.put("image", article.getImage());
         doc.put("price", article.getPrice());

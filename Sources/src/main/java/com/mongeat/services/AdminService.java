@@ -10,6 +10,7 @@ import com.mongeat.stub.OrderStub;
 import com.mongeat.stub.RestaurantStub;
 import com.mongeat.stub.UserStub;
 import jakarta.inject.Singleton;
+import org.bson.Document;
 
 @Singleton
 public class AdminService extends BaseRepository {
@@ -40,8 +41,8 @@ public class AdminService extends BaseRepository {
     }
 
     public boolean createStub(String type) {
-        /*try {
-            switch (type) {
+        try {
+            /*switch (type) {
                 case "all": {
                     database.getCollection(Article.COLLECTION_NAME).insertMany(new ArticleStub().getArticles());
                     database.getCollection(User.COLLECTION_NAME).insertMany(new UserStub().getUsers());
@@ -65,11 +66,10 @@ public class AdminService extends BaseRepository {
                     database.getCollection(Order.COLLECTION_NAME).insertMany(new OrderStub().getOrders());
                     break;
                 }
-            }
+            }*/
             return true;
         } catch (Exception e) {
             return false;
-        }*/
-        return false;
+        }
     }
 }

@@ -9,7 +9,7 @@ public abstract class GenericEntity {
     @BsonId
     private ObjectId id;
 
-    public GenericEntity(String id) {
+    protected GenericEntity(String id) {
         this.id = new ObjectId(id);
     }
 

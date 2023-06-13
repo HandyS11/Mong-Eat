@@ -3,7 +3,6 @@ package com.mongeat.entities;
 import com.mongeat.entities.parts.Category;
 import com.mongeat.entities.parts.Location;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 

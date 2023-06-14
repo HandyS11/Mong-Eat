@@ -1,6 +1,7 @@
 package com.mongeat.dtos;
 
-import com.mongeat.entities.parts.Location;
+import com.mongeat.dtos.parts.LocationDto;
+import com.mongeat.entities.parts.LocationEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,15 +10,14 @@ import java.util.List;
 
 @Getter
 @Setter
-public class OrderDto {
-    private String id;
+public class OrderDto extends GenericDto {
     private String status;
     private double price;
     private double tip;
     private double reduction;
     private double fee;
 
-    private List<String> articles = new ArrayList<>();
-    private String owner;
-    private Location location;
+    private List<ArticleDto> articles = new ArrayList<>();
+    private UserDto owner;
+    private LocationDto location;
 }

@@ -1,4 +1,4 @@
-package com.mongeat.entities.parts;
+package com.mongeat.models.parts;
 
 import lombok.Getter;
 import lombok.Setter;

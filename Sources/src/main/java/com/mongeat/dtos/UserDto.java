@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class UserDto {
+public class UserDto extends GenericDto {
     private String id;
     private String firstName;
     private String lastName;

@@ -1,6 +1,6 @@
 package com.mongeat.codec;
 
-import com.mongeat.entities.Article;
+import com.mongeat.entities.ArticleEntity;
 import com.mongodb.MongoClientSettings;
 import org.bson.BsonReader;
 import org.bson.BsonWriter;
@@ -10,7 +10,7 @@ import org.bson.codecs.DecoderContext;
 import org.bson.codecs.EncoderContext;
 import org.jetbrains.annotations.NotNull;
 
-public class ArticleCodec implements Codec<Article> {
+public class ArticleCodec implements Codec<ArticleEntity> {
     private final Codec<Document> documentCodec;
 
     public ArticleCodec() {
@@ -18,7 +18,7 @@ public class ArticleCodec implements Codec<Article> {
     }
 
     @Override
-    public void encode(BsonWriter writer, @NotNull Article article, EncoderContext encoderContext) {
+    public void encode(BsonWriter writer, @NotNull ArticleEntity article, EncoderContext encoderContext) {
         Document doc = new Document();
 
         doc.put("_id", article.getObjectId());
@@ -30,15 +30,15 @@ public class ArticleCodec implements Codec<Article> {
     }
 
     @Override
-    public Class<Article> getEncoderClass() {
-        return Article.class;
+    public Class<ArticleEntity> getEncoderClass() {
+        return ArticleEntity.class;
     }
 
     @Override
-    public Article decode(BsonReader reader, DecoderContext decoderContext) {
+    public ArticleEntity decode(BsonReader reader, DecoderContext decoderContext) {
         Document document = documentCodec.decode(reader, decoderContext);
 
-        Article article = new Article();
+        ArticleEntity article = new ArticleEntity();
 
         article.setId(document.getObjectId("_id").toString());
         article.setName(document.getString("name"));

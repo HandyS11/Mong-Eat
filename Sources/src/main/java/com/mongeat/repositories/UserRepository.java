@@ -1,14 +1,14 @@
 package com.mongeat.repositories;
 
-import com.mongeat.entities.User;
+import com.mongeat.entities.UserEntity;
 import com.mongodb.client.MongoCollection;
 import jakarta.inject.Singleton;
 
 @Singleton
-public class UserRepository extends GenericRepository<User> {
+public class UserRepository extends GenericRepository<UserEntity> {
 
     @Override
-    public MongoCollection<User> getCollection() {
-        return database.getCollection(User.COLLECTION_NAME, User.class);
+    public MongoCollection<UserEntity> getCollection() {
+        return database.getCollection(UserEntity.COLLECTION_NAME, UserEntity.class);
     }
 }

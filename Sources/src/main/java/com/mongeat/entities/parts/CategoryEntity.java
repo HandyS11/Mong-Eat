@@ -5,13 +5,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Category {
+public class CategoryEntity {
     private String name;
     private String image;
 
-    public Category() {}
+    public CategoryEntity() {}
 
-    public Category(String name, String image) {
+    public CategoryEntity(String name, String image) {
         this.name = name;
         this.image = image;
     }

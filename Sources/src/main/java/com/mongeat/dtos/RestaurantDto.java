@@ -1,19 +1,22 @@
 package com.mongeat.dtos;
 
-import com.mongeat.entities.parts.Category;
-import com.mongeat.entities.parts.Location;
-import org.bson.types.ObjectId;
+import com.mongeat.dtos.parts.CategoryDto;
+import com.mongeat.dtos.parts.LocationDto;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestaurantDto {
+@Getter
+@Setter
+public class RestaurantDto extends GenericDto {
     private String id;
     private String name;
     private String image;
     private double rate;
 
-    private List<String> articles = new ArrayList<>();
-    private List<Category> categories = new ArrayList<>();
-    private Location location;
+    private List<ArticleDto> articles = new ArrayList<>();
+    private List<CategoryDto> categories = new ArrayList<>();
+    private LocationDto location;
 }

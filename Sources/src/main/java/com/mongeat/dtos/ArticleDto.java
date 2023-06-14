@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ArticleDto {
-    private String id;
+public class ArticleDto extends GenericDto {
     private String name;
     private String image;
     private double price;

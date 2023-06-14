@@ -2,7 +2,7 @@ package com.mongeat.codec;
 
 import com.mongeat.codec.parts.CategoryCodecUtil;
 import com.mongeat.codec.parts.LocationCodecUtil;
-import com.mongeat.entities.Restaurant;
+import com.mongeat.entities.RestaurantEntity;
 import com.mongodb.MongoClientSettings;
 import org.bson.BsonReader;
 import org.bson.BsonWriter;
@@ -15,7 +15,7 @@ import org.bson.types.ObjectId;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RestaurantCodec implements Codec<Restaurant> {
+public class RestaurantCodec implements Codec<RestaurantEntity> {
     private final Codec<Document> documentCodec;
 
     public RestaurantCodec() {
@@ -23,7 +23,7 @@ public class RestaurantCodec implements Codec<Restaurant> {
     }
 
     @Override
-    public void encode(BsonWriter writer, Restaurant restaurant, EncoderContext encoderContext) {
+    public void encode(BsonWriter writer, RestaurantEntity restaurant, EncoderContext encoderContext) {
         Document doc = new Document();
 
         doc.put("_id", new ObjectId(restaurant.getId()));
@@ -38,15 +38,15 @@ public class RestaurantCodec implements Codec<Restaurant> {
     }
 
     @Override
-    public Class<Restaurant> getEncoderClass() {
-        return Restaurant.class;
+    public Class<RestaurantEntity> getEncoderClass() {
+        return RestaurantEntity.class;
     }
 
     @Override
-    public Restaurant decode(BsonReader reader, DecoderContext decoderContext) {
+    public RestaurantEntity decode(BsonReader reader, DecoderContext decoderContext) {
         Document document = documentCodec.decode(reader, decoderContext);
 
-        Restaurant restaurant = new Restaurant();
+        RestaurantEntity restaurant = new RestaurantEntity();
 
         restaurant.setId(document.getObjectId("_id").toString());
         restaurant.setName(document.getString("name"));

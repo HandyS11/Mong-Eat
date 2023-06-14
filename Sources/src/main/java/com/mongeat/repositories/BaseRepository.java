@@ -10,9 +10,6 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 
-import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
-import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
-
 public abstract class BaseRepository {
     static final String DB_NAME = "MongEat";
     static final String CONNECTION_STRING = "mongodb://localhost:27017";

@@ -5,7 +5,7 @@ import com.mongeat.models.parts.Address;
 
 public class AddressMapper {
 
-    public static Address mapToAddress(AddressDto addressDto) {
+    public static Address toModel(AddressDto addressDto) {
         Address address = new Address();
         address.setCountry(addressDto.getCountry());
         address.setCity(addressDto.getCity());
@@ -13,7 +13,7 @@ public class AddressMapper {
         return address;
     }
 
-    public static AddressDto mapToAddressDto(Address address) {
+    public static AddressDto toDto(Address address) {
         AddressDto addressDto = new AddressDto();
         addressDto.setCountry(address.getCountry());
         addressDto.setCity(address.getCity());

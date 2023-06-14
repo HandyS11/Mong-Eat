@@ -6,23 +6,25 @@ import com.mongeat.models.User;
 
 import java.util.stream.Collectors;
 
-public class UserMapper {
+public class UserMapper implements IMapper<User, UserDto> {
 
-    public static User mapToUser(UserDto userDto) {
-        User user = new User();
-        user.setId(userDto.getId());
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setLocations(userDto.getLocations().stream().map(LocationMapper::mapToLocation).collect(Collectors.toList()));
-        return user;
+    @Override
+    public UserDto toDto(User object) {
+        UserDto userDto = new UserDto();
+        userDto.setId(object.getId());
+        userDto.setFirstName(object.getFirstName());
+        userDto.setLastName(object.getLastName());
+        userDto.setLocations(object.getLocations().stream().map(LocationMapper::toDto).collect(Collectors.toList()));
+        return userDto;
     }
 
-    public static UserDto mapToUserDto(User user) {
-        UserDto userDto = new UserDto();
-        userDto.setId(user.getId());
-        userDto.setFirstName(user.getFirstName());
-        userDto.setLastName(user.getLastName());
-        userDto.setLocations(user.getLocations().stream().map(LocationMapper::mapToLocationDto).collect(Collectors.toList()));
-        return userDto;
+    @Override
+    public User toModel(UserDto object) {
+        User user = new User();
+        user.setId(object.getId());
+        user.setFirstName(object.getFirstName());
+        user.setLastName(object.getLastName());
+        user.setLocations(object.getLocations().stream().map(LocationMapper::toModel).collect(Collectors.toList()));
+        return user;
     }
 }

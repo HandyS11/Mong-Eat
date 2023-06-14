@@ -3,23 +3,25 @@ package com.mongeat.mappers;
 import com.mongeat.dtos.ArticleDto;
 import com.mongeat.models.Article;
 
-public class ArticleMapper {
+public class ArticleMapper implements IMapper<Article, ArticleDto> {
 
-    public static Article mapToArticle(ArticleDto articleDto) {
-        Article article = new Article();
-        article.setId(articleDto.getId());
-        article.setName(articleDto.getName());
-        article.setImage(articleDto.getImage());
-        article.setPrice(articleDto.getPrice());
-        return article;
+    @Override
+    public ArticleDto toDto(Article object) {
+        ArticleDto articleDto = new ArticleDto();
+        articleDto.setId(object.getId());
+        articleDto.setName(object.getName());
+        articleDto.setImage(object.getImage());
+        articleDto.setPrice(object.getPrice());
+        return articleDto;
     }
 
-    public static ArticleDto mapToArticleDto(Article article) {
-        ArticleDto articleDto = new ArticleDto();
-        articleDto.setId(article.getId());
-        articleDto.setName(article.getName());
-        articleDto.setImage(article.getImage());
-        articleDto.setPrice(article.getPrice());
-        return articleDto;
+    @Override
+    public Article toModel(ArticleDto object) {
+        Article article = new Article();
+        article.setId(object.getId());
+        article.setName(object.getName());
+        article.setImage(object.getImage());
+        article.setPrice(object.getPrice());
+        return article;
     }
 }

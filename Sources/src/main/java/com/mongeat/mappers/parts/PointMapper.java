@@ -5,14 +5,14 @@ import com.mongeat.models.parts.Point;
 
 public class PointMapper {
 
-    public static Point mapToPoint(PointDto pointDto) {
+    public static Point toModel(PointDto pointDto) {
         Point point = new Point();
         point.setX(pointDto.getX());
         point.setY(pointDto.getY());
         return point;
     }
 
-    public static PointDto mapToPointDto(Point point) {
+    public static PointDto toDto(Point point) {
         PointDto pointDto = new PointDto();
         pointDto.setX(point.getX());
         pointDto.setY(point.getY());

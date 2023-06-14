@@ -5,17 +5,17 @@ import com.mongeat.models.parts.Location;
 
 public class LocationMapper {
 
-    public static Location mapToLocation(LocationDto locationDto) {
+    public static Location toModel(LocationDto locationDto) {
         Location location = new Location();
-        location.setAddress(AddressMapper.mapToAddress(locationDto.getAddress()));
-        location.setPoint(PointMapper.mapToPoint(locationDto.getPoint()));
+        location.setAddress(AddressMapper.toModel(locationDto.getAddress()));
+        location.setPoint(PointMapper.toModel(locationDto.getPoint()));
         return location;
     }
 
-    public static LocationDto mapToLocationDto(Location location) {
+    public static LocationDto toDto(Location location) {
         LocationDto locationDto = new LocationDto();
-        locationDto.setAddress(AddressMapper.mapToAddressDto(location.getAddress()));
-        locationDto.setPoint(PointMapper.mapToPointDto(location.getPoint()));
+        locationDto.setAddress(AddressMapper.toDto(location.getAddress()));
+        locationDto.setPoint(PointMapper.toDto(location.getPoint()));
         return locationDto;
     }
 }

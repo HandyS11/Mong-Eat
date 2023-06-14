@@ -7,27 +7,30 @@ import com.mongeat.models.Restaurant;
 
 import java.util.stream.Collectors;
 
-public class RestaurantMapper {
+public class RestaurantMapper implements IMapper<Restaurant, RestaurantDto> {
+    ArticleMapper articleMapper = new ArticleMapper();
 
-    public static Restaurant mapToRestaurant(RestaurantDto restaurantDto) {
-        Restaurant restaurant = new Restaurant();
-        restaurant.setId(restaurantDto.getId());
-        restaurant.setName(restaurantDto.getName());
-        restaurant.setRate(restaurantDto.getRate());
-        restaurant.setArticles(restaurantDto.getArticles().stream().map(ArticleMapper::mapToArticle).collect(Collectors.toList()));
-        restaurant.setCategories(restaurantDto.getCategories().stream().map(CategoryMapper::mapToCategory).collect(Collectors.toList()));
-        restaurant.setLocation(LocationMapper.mapToLocation(restaurantDto.getLocation()));
-        return restaurant;
+    @Override
+    public RestaurantDto toDto(Restaurant object) {
+        RestaurantDto restaurantDto = new RestaurantDto();
+        restaurantDto.setId(object.getId());
+        restaurantDto.setName(object.getName());
+        restaurantDto.setRate(object.getRate());
+        restaurantDto.setArticles(object.getArticles().stream().map(article -> articleMapper.toDto(article)).collect(Collectors.toList()));
+        restaurantDto.setCategories(object.getCategories().stream().map(CategoryMapper::toDto).collect(Collectors.toList()));
+        restaurantDto.setLocation(LocationMapper.toDto(object.getLocation()));
+        return restaurantDto;
     }
 
-    public static RestaurantDto mapToRestaurantDto(Restaurant restaurant) {
-        RestaurantDto restaurantDto = new RestaurantDto();
-        restaurantDto.setId(restaurant.getId());
-        restaurantDto.setName(restaurant.getName());
-        restaurantDto.setRate(restaurant.getRate());
-        restaurantDto.setArticles(restaurant.getArticles().stream().map(ArticleMapper::mapToArticleDto).collect(Collectors.toList()));
-        restaurantDto.setCategories(restaurant.getCategories().stream().map(CategoryMapper::mapToCategoryDto).collect(Collectors.toList()));
-        restaurantDto.setLocation(LocationMapper.mapToLocationDto(restaurant.getLocation()));
-        return restaurantDto;
+    @Override
+    public Restaurant toModel(RestaurantDto object) {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setId(object.getId());
+        restaurant.setName(object.getName());
+        restaurant.setRate(object.getRate());
+        restaurant.setArticles(object.getArticles().stream().map(article -> articleMapper.toModel(article)).collect(Collectors.toList()));
+        restaurant.setCategories(object.getCategories().stream().map(CategoryMapper::toModel).collect(Collectors.toList()));
+        restaurant.setLocation(LocationMapper.toModel(object.getLocation()));
+        return restaurant;
     }
 }

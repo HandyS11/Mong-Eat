@@ -6,33 +6,37 @@ import com.mongeat.models.Order;
 
 import java.util.stream.Collectors;
 
-public class OrderMapper {
+public class OrderMapper implements IMapper<Order, OrderDto> {
+    ArticleMapper articleMapper = new ArticleMapper();
+    UserMapper userMapper = new UserMapper();
 
-    public static Order mapToOrder(OrderDto orderDto) {
-        Order order = new Order();
-        order.setId(orderDto.getId());
-        order.setStatus(orderDto.getStatus());
-        order.setPrice(orderDto.getPrice());
-        order.setTip(orderDto.getTip());
-        order.setReduction(orderDto.getReduction());
-        order.setFee(orderDto.getFee());
-        order.setArticles(orderDto.getArticles().stream().map(ArticleMapper::mapToArticle).collect(Collectors.toList()));
-        order.setOwner(UserMapper.mapToUser(orderDto.getOwner()));
-        order.setLocation(LocationMapper.mapToLocation(orderDto.getLocation()));
-        return order;
+    @Override
+    public OrderDto toDto(Order object) {
+        OrderDto orderDto = new OrderDto();
+        orderDto.setId(object.getId());
+        orderDto.setStatus(object.getStatus());
+        orderDto.setPrice(object.getPrice());
+        orderDto.setTip(object.getTip());
+        orderDto.setReduction(object.getReduction());
+        orderDto.setFee(object.getFee());
+        orderDto.setArticles(object.getArticles().stream().map(article -> articleMapper.toDto(article)).collect(Collectors.toList()));
+        orderDto.setOwner(object.getOwner() != null ? userMapper.toDto(object.getOwner()) : null);
+        orderDto.setLocation(LocationMapper.toDto(object.getLocation()));
+        return orderDto;
     }
 
-    public static OrderDto mapToOrderDto(Order order) {
-        OrderDto orderDto = new OrderDto();
-        orderDto.setId(order.getId());
-        orderDto.setStatus(order.getStatus());
-        orderDto.setPrice(order.getPrice());
-        orderDto.setTip(order.getTip());
-        orderDto.setReduction(order.getReduction());
-        orderDto.setFee(order.getFee());
-        orderDto.setArticles(order.getArticles().stream().map(ArticleMapper::mapToArticleDto).collect(Collectors.toList()));
-        orderDto.setOwner(UserMapper.mapToUserDto(order.getOwner()));
-        orderDto.setLocation(LocationMapper.mapToLocationDto(order.getLocation()));
-        return orderDto;
+    @Override
+    public Order toModel(OrderDto object) {
+        Order order = new Order();
+        order.setId(object.getId());
+        order.setStatus(object.getStatus());
+        order.setPrice(object.getPrice());
+        order.setTip(object.getTip());
+        order.setReduction(object.getReduction());
+        order.setFee(object.getFee());
+        order.setArticles(object.getArticles().stream().map(article -> articleMapper.toModel(article)).collect(Collectors.toList()));
+        order.setOwner(userMapper.toModel(object.getOwner()));
+        order.setLocation(LocationMapper.toModel(object.getLocation()));
+        return order;
     }
 }

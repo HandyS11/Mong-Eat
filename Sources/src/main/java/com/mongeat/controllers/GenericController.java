@@ -9,8 +9,13 @@ import lombok.NonNull;
 
 import java.util.Collection;
 
-public abstract class GenericController<T extends GenericEntity> {
+public abstract class GenericController<T extends GenericEntity, G> {
+   private final Class<G> entityClass;
     protected GenericService<T> service;
+
+    protected GenericController(Class<G> entityClass) {
+        this.entityClass = entityClass;
+    }
 
     public void setService(@NonNull GenericService<T> service) {
         this.service = service;
@@ -41,7 +46,8 @@ public abstract class GenericController<T extends GenericEntity> {
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        return Response.ok(service.getAll()).build();
+        var entities = service.getAll();
+        return Response.ok(entities).build();
     }
 
     @GET
@@ -51,6 +57,23 @@ public abstract class GenericController<T extends GenericEntity> {
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response insert(T entity) {
+        try {
+            var e = service.insert(entity);
+            return Response.status(Response.Status.CREATED)
+                           .entity(e)
+                           .build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @POST
+    @Path("/all")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response insertAll(Collection<T> entities) {
@@ -67,6 +90,21 @@ public abstract class GenericController<T extends GenericEntity> {
     }
 
     @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response update(T entity) {
+        try {
+            service.update(entity);
+            return Response.ok(entity).build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @PUT
+    @Path("/all")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateAll(Collection<T> entities) {

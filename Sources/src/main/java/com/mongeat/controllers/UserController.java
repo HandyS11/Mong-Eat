@@ -1,13 +1,16 @@
 package com.mongeat.controllers;
 
-import com.mongeat.entities.User;
+import com.mongeat.dtos.UserDto;
+import com.mongeat.entities.UserEntity;
+import com.mongeat.mappers.UserMapper;
+import com.mongeat.models.User;
 import com.mongeat.services.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
 
 @Path("/users")
-public class UserController extends GenericController<User> {
+public class UserController extends GenericController<UserDto, User, UserEntity> {
 
     @Inject
     UserService userService;
@@ -15,5 +18,6 @@ public class UserController extends GenericController<User> {
     @PostConstruct
     public void init() {
         setService(userService);
+        setMapper(new UserMapper());
     }
 }

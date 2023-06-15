@@ -1,14 +1,14 @@
 package com.mongeat.repositories;
 
-import com.mongeat.entities.Restaurant;
+import com.mongeat.entities.RestaurantEntity;
 import com.mongodb.client.MongoCollection;
 import jakarta.inject.Singleton;
 
 @Singleton
-public class RestaurantRepository extends GenericRepository<Restaurant> {
+public class RestaurantRepository extends GenericRepository<RestaurantEntity> {
 
     @Override
-    public MongoCollection<Restaurant> getCollection() {
-        return database.getCollection(Restaurant.COLLECTION_NAME, Restaurant.class);
+    public MongoCollection<RestaurantEntity> getCollection() {
+        return database.getCollection(RestaurantEntity.COLLECTION_NAME, RestaurantEntity.class);
     }
 }

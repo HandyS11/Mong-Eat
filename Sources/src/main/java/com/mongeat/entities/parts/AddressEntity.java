@@ -5,14 +5,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Address {
+public class AddressEntity {
     private String country;
     private String city;
     private String road;
 
-    public Address() {}
+    public AddressEntity() {}
 
-    public Address(String country, String city, String road) {
+    public AddressEntity(String country, String city, String road) {
         this.country = country;
         this.city = city;
         this.road = road;

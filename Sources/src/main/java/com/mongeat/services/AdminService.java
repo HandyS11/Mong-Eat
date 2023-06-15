@@ -1,9 +1,9 @@
 package com.mongeat.services;
 
-import com.mongeat.entities.Article;
-import com.mongeat.entities.Order;
-import com.mongeat.entities.Restaurant;
-import com.mongeat.entities.User;
+import com.mongeat.entities.ArticleEntity;
+import com.mongeat.entities.OrderEntity;
+import com.mongeat.entities.RestaurantEntity;
+import com.mongeat.entities.UserEntity;
 import com.mongeat.repositories.BaseRepository;
 import com.mongeat.stub.ArticleStub;
 import com.mongeat.stub.OrderStub;
@@ -21,19 +21,19 @@ public class AdminService extends BaseRepository {
                 break;
             }
             case "articles": {
-                database.getCollection(Article.COLLECTION_NAME).drop();
+                database.getCollection(ArticleEntity.COLLECTION_NAME).drop();
                 break;
             }
             case "users": {
-                database.getCollection(User.COLLECTION_NAME).drop();
+                database.getCollection(UserEntity.COLLECTION_NAME).drop();
                 break;
             }
             case "orders": {
-                database.getCollection(Order.COLLECTION_NAME).drop();
+                database.getCollection(OrderEntity.COLLECTION_NAME).drop();
                 break;
             }
             case "restaurants": {
-                database.getCollection(Restaurant.COLLECTION_NAME).drop();
+                database.getCollection(RestaurantEntity.COLLECTION_NAME).drop();
                 break;
             }
             default: {
@@ -46,26 +46,26 @@ public class AdminService extends BaseRepository {
         try {
             switch (type) {
                 case "all": {
-                    database.getCollection(Article.COLLECTION_NAME, Article.class).insertMany(new ArticleStub().getArticles());
-                    database.getCollection(User.COLLECTION_NAME, User.class).insertMany(new UserStub().getUsers());
-                    database.getCollection(Restaurant.COLLECTION_NAME, Restaurant.class).insertMany(new RestaurantStub().getRestaurants());
-                    database.getCollection(Order.COLLECTION_NAME, Order.class).insertMany(new OrderStub().getOrders());
+                    database.getCollection(ArticleEntity.COLLECTION_NAME, ArticleEntity.class).insertMany(new ArticleStub().getArticles());
+                    database.getCollection(UserEntity.COLLECTION_NAME, UserEntity.class).insertMany(new UserStub().getUsers());
+                    database.getCollection(RestaurantEntity.COLLECTION_NAME, RestaurantEntity.class).insertMany(new RestaurantStub().getRestaurants());
+                    database.getCollection(OrderEntity.COLLECTION_NAME, OrderEntity.class).insertMany(new OrderStub().getOrders());
                     break;
                 }
                 case "articles": {
-                    database.getCollection(Article.COLLECTION_NAME, Article.class).insertMany(new ArticleStub().getArticles());
+                    database.getCollection(ArticleEntity.COLLECTION_NAME, ArticleEntity.class).insertMany(new ArticleStub().getArticles());
                     break;
                 }
                 case "users": {
-                    database.getCollection(User.COLLECTION_NAME, User.class).insertMany(new UserStub().getUsers());
+                    database.getCollection(UserEntity.COLLECTION_NAME, UserEntity.class).insertMany(new UserStub().getUsers());
                     break;
                 }
                 case "restaurants": {
-                    database.getCollection(Restaurant.COLLECTION_NAME, Restaurant.class).insertMany(new RestaurantStub().getRestaurants());
+                    database.getCollection(RestaurantEntity.COLLECTION_NAME, RestaurantEntity.class).insertMany(new RestaurantStub().getRestaurants());
                     break;
                 }
                 case "orders": {
-                    database.getCollection(Order.COLLECTION_NAME, Order.class).insertMany(new OrderStub().getOrders());
+                    database.getCollection(OrderEntity.COLLECTION_NAME, OrderEntity.class).insertMany(new OrderStub().getOrders());
                     break;
                 }
                 default: {

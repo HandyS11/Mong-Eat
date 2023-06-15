@@ -1,13 +1,13 @@
-package com.mongeat.entities.parts;
+package com.mongeat.models.parts;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 public class Location {
-    private Point point;
     private Address address;
+    private Point point;
 
     public Location() {}
 

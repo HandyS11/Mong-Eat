@@ -1,7 +1,7 @@
 package com.mongeat.codec;
 
 import com.mongeat.codec.parts.LocationCodecUtil;
-import com.mongeat.entities.Order;
+import com.mongeat.entities.OrderEntity;
 import com.mongodb.MongoClientSettings;
 import org.bson.BsonReader;
 import org.bson.BsonWriter;
@@ -14,7 +14,7 @@ import org.bson.types.ObjectId;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OrderCodec implements Codec<Order> {
+public class OrderCodec implements Codec<OrderEntity> {
     private final Codec<Document> documentCodec;
 
     public OrderCodec() {
@@ -22,7 +22,7 @@ public class OrderCodec implements Codec<Order> {
     }
 
     @Override
-    public void encode(BsonWriter writer, Order order, EncoderContext encoderContext) {
+    public void encode(BsonWriter writer, OrderEntity order, EncoderContext encoderContext) {
         Document doc = new Document();
 
         doc.put("_id", order.getObjectId());
@@ -39,15 +39,15 @@ public class OrderCodec implements Codec<Order> {
     }
 
     @Override
-    public Class<Order> getEncoderClass() {
-        return Order.class;
+    public Class<OrderEntity> getEncoderClass() {
+        return OrderEntity.class;
     }
 
     @Override
-    public Order decode(BsonReader reader, DecoderContext decoderContext) {
+    public OrderEntity decode(BsonReader reader, DecoderContext decoderContext) {
         Document document = documentCodec.decode(reader, decoderContext);
 
-        Order order = new Order();
+        OrderEntity order = new OrderEntity();
 
         order.setId(document.getObjectId("_id").toString());
         order.setStatus(document.getString("status"));

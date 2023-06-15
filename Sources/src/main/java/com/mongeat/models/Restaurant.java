@@ -1,30 +1,25 @@
-package com.mongeat.entities;
+package com.mongeat.models;
 
-import com.mongeat.entities.parts.Category;
-import com.mongeat.entities.parts.Location;
+import com.mongeat.models.parts.Category;
+import com.mongeat.models.parts.Location;
 import lombok.Getter;
 import lombok.Setter;
-import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-public class Restaurant extends GenericEntity {
-    public static final String COLLECTION_NAME = "restaurants";
-
+public class Restaurant extends GenericModel {
     private String name;
     private String image;
     private double rate;
 
-    private List<String> articles = new ArrayList<>();
+    private List<Article> articles = new ArrayList<>();
     private List<Category> categories = new ArrayList<>();
     private Location location;
 
-    public Restaurant() {
-        super(new ObjectId().toHexString());
-    }
+    public Restaurant() { }
 
     public Restaurant(String id, String name, String image, double rate, Location location) {
         super(id);
@@ -34,7 +29,7 @@ public class Restaurant extends GenericEntity {
         this.location = location;
     }
 
-    public Restaurant(String id, String name, String image, double rate, List<String> articles, List<Category> categories, Location location) {
+    public Restaurant(String id, String name, String image, double rate, List<Article> articles, List<Category> categories, Location location) {
         this(id, name, image, rate, location);
         this.articles.addAll(articles);
         this.categories.addAll(categories);

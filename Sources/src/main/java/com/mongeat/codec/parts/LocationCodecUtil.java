@@ -1,11 +1,11 @@
 package com.mongeat.codec.parts;
 
-import com.mongeat.entities.parts.Location;
+import com.mongeat.entities.parts.LocationEntity;
 import org.bson.Document;
 
 public class LocationCodecUtil {
-    public static Location extractLocation(Document locationDoc) {
-        Location l = new Location();
+    public static LocationEntity extractLocation(Document locationDoc) {
+        LocationEntity l = new LocationEntity();
 
         l.setPoint(PointCodecUtil.extractPoint((Document) locationDoc.get("point")));
         l.setAddress(AddressCodecUtil.extractAddress((Document) locationDoc.get("address")));
@@ -13,7 +13,7 @@ public class LocationCodecUtil {
         return l;
     }
 
-    public static Document insertLocation(Location l) {
+    public static Document insertLocation(LocationEntity l) {
         Document p = new Document();
         p.put("x", l.getPoint().getX());
         p.put("y", l.getPoint().getY());

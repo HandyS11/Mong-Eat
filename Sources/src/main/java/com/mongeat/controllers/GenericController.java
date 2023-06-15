@@ -1,6 +1,7 @@
 package com.mongeat.controllers;
 
 import com.mongeat.entities.GenericEntity;
+import com.mongeat.mappers.IMapper;
 import com.mongeat.services.GenericService;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -8,12 +9,17 @@ import jakarta.ws.rs.core.Response;
 import lombok.NonNull;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
-public abstract class GenericController<T extends GenericEntity> {
-    protected GenericService<T> service;
+public abstract class GenericController<D, M, E extends GenericEntity> {
+    protected GenericService<M, E> service;
+    protected IMapper<M, D> mapper;
 
-    public void setService(@NonNull GenericService<T> service) {
+    public void setService(@NonNull GenericService<M, E> service) {
         this.service = service;
+    }
+    public void setMapper(@NonNull IMapper<M, D> mapper) {
+        this.mapper = mapper;
     }
 
     @GET
@@ -21,9 +27,9 @@ public abstract class GenericController<T extends GenericEntity> {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") String id) {
         try {
-            T entity = service.getById(id);
-            if (entity != null) {
-                return Response.ok(entity).build();
+            M model = service.getById(id);
+            if (model != null) {
+                return Response.ok(mapper.toDto(model)).build();
             }
             else {
                 return Response.status(Response.Status.NOT_FOUND)
@@ -41,7 +47,8 @@ public abstract class GenericController<T extends GenericEntity> {
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
-        return Response.ok(service.getAll()).build();
+        Collection<M> models = service.getAll();
+        return Response.ok(models.stream().map(m -> mapper.toDto(m)).collect(Collectors.toList())).build();
     }
 
     @GET
@@ -53,12 +60,27 @@ public abstract class GenericController<T extends GenericEntity> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response insertAll(Collection<T> entities) {
+    public Response insert(D dto) {
         try {
-            var e = service.insertAll(entities);
+            service.insert(mapper.toModel(dto));
             return Response.status(Response.Status.CREATED)
-                           .entity(e)
                            .build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @POST
+    @Path("/all")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response insertAll(Collection<D> dtos) {
+        try {
+            service.insertAll(dtos.stream().map(d -> mapper.toModel(d)).collect(Collectors.toList()));
+            return Response.status(Response.Status.CREATED)
+                            .build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)
                            .entity(e.getMessage())
@@ -69,10 +91,25 @@ public abstract class GenericController<T extends GenericEntity> {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateAll(Collection<T> entities) {
+    public Response update(D dto) {
         try {
-            service.updateAll(entities);
-            return Response.ok(entities).build();
+            service.update(mapper.toModel(dto));
+            return Response.ok().build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
+    @PUT
+    @Path("/all")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateAll(Collection<D> dtos) {
+        try {
+            service.updateAll(dtos.stream().map(d -> mapper.toModel(d)).collect(Collectors.toList()));
+            return Response.ok().build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)
                            .entity(e.getMessage())
@@ -124,8 +161,7 @@ public abstract class GenericController<T extends GenericEntity> {
     @Produces(MediaType.APPLICATION_JSON)
     public Response exists(@PathParam("id") String id) {
         try {
-            service.exists(id);
-            return Response.ok(true).build();
+            return Response.ok(service.exists(id)).build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)
                            .entity(e.getMessage())

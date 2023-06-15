@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 public abstract class GenericService<M, E extends GenericEntity> {
-
     protected GenericRepository<E> repository;
     protected IConverter<M, E> converter;
 

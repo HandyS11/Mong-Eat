@@ -24,7 +24,8 @@ public abstract class GenericRepository<T extends GenericEntity> extends BaseRep
     }
 
     public Collection<T> getPaginated(int page, int limit) {
-        return getCollection().find().skip(page * limit).limit(limit).into(new ArrayList<>());
+        int skipCount = page * limit;
+        return getCollection().find().skip(skipCount).limit(limit).into(new ArrayList<>());
     }
 
     public void insert(T entity) {

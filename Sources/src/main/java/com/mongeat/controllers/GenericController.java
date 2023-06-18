@@ -9,6 +9,7 @@ import jakarta.ws.rs.core.Response;
 import lombok.NonNull;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class GenericController<D, M, E extends GenericEntity> {
@@ -53,13 +54,12 @@ public abstract class GenericController<D, M, E extends GenericEntity> {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getPaginated(@PathParam("page") int page, @PathParam("limit") int limit) {
+    public Response getPaginated(@QueryParam("page") int page, @QueryParam("limit") int limit) {
         return Response.ok(service.getPaginated(page, limit)).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response insert(D dto) {
         try {
             service.insert(mapper.toModel(dto));
@@ -75,10 +75,10 @@ public abstract class GenericController<D, M, E extends GenericEntity> {
     @POST
     @Path("/all")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response insertAll(Collection<D> dtos) {
         try {
-            service.insertAll(dtos.stream().map(d -> mapper.toModel(d)).collect(Collectors.toList()));
+            List<M> models = dtos.stream().map(d -> mapper.toModel(d)).collect(Collectors.toList());
+            service.insertAll(models);
             return Response.status(Response.Status.CREATED)
                             .build();
         } catch (IllegalArgumentException e) {
@@ -90,7 +90,6 @@ public abstract class GenericController<D, M, E extends GenericEntity> {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response update(D dto) {
         try {
             service.update(mapper.toModel(dto));
@@ -102,10 +101,10 @@ public abstract class GenericController<D, M, E extends GenericEntity> {
         }
     }
 
-    @PUT
+    //TODO: not working (it may be a parsing problem)
+    /*@PUT
     @Path("/all")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response updateAll(Collection<D> dtos) {
         try {
             service.updateAll(dtos.stream().map(d -> mapper.toModel(d)).collect(Collectors.toList()));
@@ -115,7 +114,7 @@ public abstract class GenericController<D, M, E extends GenericEntity> {
                            .entity(e.getMessage())
                            .build();
         }
-    }
+    }*/
 
     @DELETE
     @Path("/{id}")

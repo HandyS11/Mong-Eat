@@ -31,7 +31,6 @@ public class RestaurantService extends GenericService<Restaurant, RestaurantEnti
         setConverter(new RestaurantConverter());
     }
 
-    //TODO: fix this shit (not working for no reason)
     @Override
     public Restaurant getById(String id) {
         RestaurantEntity entity = repository.findById(id);

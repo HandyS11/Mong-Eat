@@ -26,7 +26,7 @@ public class RestaurantCodec implements Codec<RestaurantEntity> {
     public void encode(BsonWriter writer, RestaurantEntity restaurant, EncoderContext encoderContext) {
         Document doc = new Document();
 
-        doc.put("_id", new ObjectId(restaurant.getId()));
+        doc.put("_id", restaurant.getObjectId());
         doc.put("name", restaurant.getName());
         doc.put("image", restaurant.getImage());
         doc.put("rate", restaurant.getRate());

@@ -15,6 +15,7 @@ public class RestaurantMapper implements IMapper<Restaurant, RestaurantDto> {
         RestaurantDto restaurantDto = new RestaurantDto();
         restaurantDto.setId(object.getId());
         restaurantDto.setName(object.getName());
+        restaurantDto.setImage(object.getImage());
         restaurantDto.setRate(object.getRate());
         restaurantDto.setArticles(object.getArticles().stream().map(article -> articleMapper.toDto(article)).collect(Collectors.toList()));
         restaurantDto.setCategories(object.getCategories().stream().map(CategoryMapper::toDto).collect(Collectors.toList()));
@@ -27,6 +28,7 @@ public class RestaurantMapper implements IMapper<Restaurant, RestaurantDto> {
         Restaurant restaurant = new Restaurant();
         restaurant.setId(object.getId());
         restaurant.setName(object.getName());
+        restaurant.setImage(object.getImage());
         restaurant.setRate(object.getRate());
         restaurant.setArticles(object.getArticles().stream().map(article -> articleMapper.toModel(article)).collect(Collectors.toList()));
         restaurant.setCategories(object.getCategories().stream().map(CategoryMapper::toModel).collect(Collectors.toList()));

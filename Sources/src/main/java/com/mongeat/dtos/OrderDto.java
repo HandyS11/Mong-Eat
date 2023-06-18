@@ -1,7 +1,6 @@
 package com.mongeat.dtos;
 
 import com.mongeat.dtos.parts.LocationDto;
-import com.mongeat.entities.parts.LocationEntity;
 import lombok.Getter;
 import lombok.Setter;
 

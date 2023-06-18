@@ -10,7 +10,6 @@ import jakarta.inject.Singleton;
 
 @Singleton
 public class UserService extends GenericService<User, UserEntity> {
-
     @Inject
     UserRepository userRepository;
 

@@ -7,9 +7,10 @@ import com.mongeat.repositories.GenericRepository;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public abstract class GenericService<M, E extends GenericEntity> {
+public abstract class GenericService<M, MA, E extends GenericEntity> {
     protected GenericRepository<E> repository;
     protected IConverter<M, E> converter;
+    protected IConverter<MA, E> addConverter;
 
     protected void setRepository(GenericRepository<E> repository) {
         this.repository = repository;
@@ -17,6 +18,10 @@ public abstract class GenericService<M, E extends GenericEntity> {
 
     protected void setConverter(IConverter<M, E> converter) {
         this.converter = converter;
+    }
+
+    protected void setAddConverter(IConverter<MA, E> addConverter) {
+        this.addConverter = addConverter;
     }
 
     public M getById(String id) {
@@ -34,12 +39,12 @@ public abstract class GenericService<M, E extends GenericEntity> {
         return entities.stream().map(e -> converter.toModel(e)).collect(Collectors.toList());
     }
 
-    public void insert(M model) {
-        repository.insert(converter.toEntity(model));
+    public void insert(MA model) {
+        repository.insert(addConverter.toEntity(model));
     }
 
-    public void insertAll(Collection<M> models) {
-        repository.insertAll(models.stream().map(m -> converter.toEntity(m)).collect(Collectors.toList()));
+    public void insertAll(Collection<MA> models) {
+        repository.insertAll(models.stream().map(m -> addConverter.toEntity(m)).collect(Collectors.toList()));
     }
 
     public void update(M model) {

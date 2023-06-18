@@ -2,9 +2,11 @@ package com.mongeat.services;
 
 import com.mongeat.converters.ArticleConverter;
 import com.mongeat.converters.RestaurantConverter;
+import com.mongeat.converters.add.NewRestaurantConverter;
 import com.mongeat.entities.RestaurantEntity;
 import com.mongeat.models.Article;
 import com.mongeat.models.Restaurant;
+import com.mongeat.models.add.NewRestaurant;
 import com.mongeat.repositories.ArticleRepository;
 import com.mongeat.repositories.RestaurantRepository;
 import jakarta.annotation.PostConstruct;
@@ -17,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Singleton
-public class RestaurantService extends GenericService<Restaurant, RestaurantEntity> {
+public class RestaurantService extends GenericService<Restaurant, NewRestaurant, RestaurantEntity> {
     @Inject
     RestaurantRepository restaurantRepository;
     @Inject
@@ -29,6 +31,7 @@ public class RestaurantService extends GenericService<Restaurant, RestaurantEnti
     public void init() {
         setRepository(restaurantRepository);
         setConverter(new RestaurantConverter());
+        setAddConverter(new NewRestaurantConverter());
     }
 
     @Override

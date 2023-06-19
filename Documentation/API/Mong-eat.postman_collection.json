@@ -7,6 +7,67 @@
 	},
 	"item": [
 		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Setup",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/admin/setup",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"admin",
+								"setup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateStubs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/admin/stub/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"admin",
+								"stub",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DropDataBase",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/admin/drop/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"admin",
+								"drop",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Article",
 			"item": [
 				{
@@ -15,18 +76,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/{{ARTICLE_PATH}}?id=\"aaaaa\"",
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/648b3d0a263a7897b3099e70",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
-								"{{ARTICLE_PATH}}"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "\"aaaaa\""
-								}
+								"{{ARTICLE_PATH}}",
+								"648b3d0a263a7897b3099e70"
 							]
 						}
 					},
@@ -56,7 +112,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/{{ARTICLE_PATH}}?page=0&limit=3",
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}?page=0&limit=2",
 							"host": [
 								"{{HOST}}"
 							],
@@ -70,8 +126,34 @@
 								},
 								{
 									"key": "limit",
-									"value": "3"
+									"value": "2"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEntity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ISnack 2.0\",\r\n    \"image\": \"https://www.thebrandingjournal.com/wp-content/uploads/2016/05/the_branding_journal_case_study_isnack-2.0_vegemite_8.jpg\",\r\n    \"price\": 5.55\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}"
 							]
 						}
 					},
@@ -84,7 +166,34 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n\r\n    },\r\n    {\r\n        \r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"name\": \"ISnack 3.0\",\r\n        \"image\": \"https://www.thebrandingjournal.com/wp-content/uploads/2016/05/the_branding_journal_case_study_isnack-2.0_vegemite_8.jpg\",\r\n        \"price\": 5.55\r\n    },\r\n    {\r\n        \"name\": \"ISnack 4.0\",\r\n        \"image\": \"https://www.thebrandingjournal.com/wp-content/uploads/2016/05/the_branding_journal_case_study_isnack-2.0_vegemite_8.jpg\",\r\n        \"price\": 5.55\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutEntity",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"64705dcabd367e78ccaddbe0\",\r\n    \"name\": \"HOTDOG 2.0\",\r\n    \"image\": \"https://img-3.journaldesfemmes.fr/EnBOqIbquxzrhd5mUBBcYWxuC6k=/800x600/smart/7f89fdbac0064efd89ffefe57963f5e4/recipe-jdf/10027650.jpg\",\r\n    \"price\": 6.66\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -110,7 +219,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
+							"raw": "[\r\n    {\r\n        \"id\": \"64705dcabd367e78ccaddbe0\",\r\n        \"name\": \"HOTDOG 2.0\",\r\n        \"image\": \"https://img-3.journaldesfemmes.fr/EnBOqIbquxzrhd5mUBBcYWxuC6k=/800x600/smart/7f89fdbac0064efd89ffefe57963f5e4/recipe-jdf/10027650.jpg\",\r\n        \"price\": 6.66\r\n    },\r\n    {\r\n        \"id\": \"64705dda1fe1d56fab1b17b2\",\r\n        \"name\": \"KEBAB 2.0\",\r\n        \"image\": \"https://assets.afcdn.com/recipe/20210304/118354_w1024h1024c1cx1060cy707.webp\",\r\n        \"price\": 6.66\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -118,12 +227,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}/{{ARTICLE_PATH}}",
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/all",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
-								"{{ARTICLE_PATH}}"
+								"{{ARTICLE_PATH}}",
+								"all"
 							]
 						}
 					},
@@ -213,18 +323,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/{{ORDER_PATH}}?id=\"aaaaa\"",
+							"raw": "{{HOST}}/{{ORDER_PATH}}/64799a8ec40b7a7aad35ac40",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
-								"{{ORDER_PATH}}"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "\"aaaaa\""
-								}
+								"{{ORDER_PATH}}",
+								"64799a8ec40b7a7aad35ac40"
 							]
 						}
 					},
@@ -254,7 +359,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/{{ORDER_PATH}}?page=0&limit=3",
+							"raw": "{{HOST}}/{{ORDER_PATH}}?page=0&limit=2",
 							"host": [
 								"{{HOST}}"
 							],
@@ -268,8 +373,34 @@
 								},
 								{
 									"key": "limit",
-									"value": "3"
+									"value": "2"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEntity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"ON GOING\",\r\n    \"price\": 10.99,\r\n    \"tip\": 3,\r\n    \"reduction\": 0,\r\n    \"fee\": 1.2,\r\n    \"articles\": [\r\n        \"64705df5278554181000e023\",\r\n        \"64705e5df7e8ac3405332f57\"\r\n    ],\r\n    \"owner\": \"647063cc67e91803a0f73cc6\",\r\n    \"location\": {\r\n        \"point\": {\r\n            \"x\": 45.77,\r\n            \"y\": 3.08\r\n        },\r\n        \"address\": {\r\n            \"country\": \"France\",\t\r\n            \"city\": \"Aubière\",\r\n            \"road\": \"par là\"\r\n        } \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}"
 							]
 						}
 					},
@@ -282,7 +413,34 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n\r\n    },\r\n    {\r\n        \r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"status\": \"DELIVER\",\r\n        \"price\": 17.99,\r\n        \"tip\": 2,\r\n        \"reduction\": 0,\r\n        \"fee\": 3.2,\r\n        \"articles\": [\r\n            \"64705e5df7e8ac3405332f57\",\r\n            \"64705e9520469bd3b59ec539\"\r\n        ],\r\n        \"owner\": \"6470641c251dad7b4fc1dc00\",\r\n        \"location\": {\r\n            \"point\": {\r\n                \"x\": 45.77,\r\n                \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    },\r\n    {\r\n        \"status\": \"ON GOING\",\r\n        \"price\": 10.99,\r\n        \"tip\": 3,\r\n        \"reduction\": 0,\r\n        \"fee\": 1.2,\r\n        \"articles\": [\r\n            \"64705df5278554181000e023\",\r\n            \"64705e5df7e8ac3405332f57\"\r\n        ],\r\n        \"owner\": \"647063cc67e91803a0f73cc6\",\r\n        \"location\": {\r\n            \"point\": {\r\n                \"x\": 45.77,\r\n                \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{ORDER_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ORDER_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutEntity",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"64799a8ec40b7a7aad35ac40\",\r\n    \"status\": \"NOT DONE OMFG\",\r\n    \"price\": 66.66,\r\n    \"tip\": 2,\r\n    \"reduction\": 0,\r\n    \"fee\": 1.8,\r\n    \"articles\": [\r\n        {\r\n            \"id\": \"64705dda1fe1d56fab1b17b2\"\r\n        },\r\n        {\r\n            \"id\": \"64705e9520469bd3b59ec539\"\r\n        }\r\n    ],\r\n    \"owner\": {\r\n        \"id\": \"647063c7e4314fe5feca99f2\"\r\n    },\r\n    \"location\": {\r\n        \"point\": {\r\n            \"x\": 45.77,\r\n            \"y\": 3.08\r\n        },\r\n        \"address\": {\r\n            \"country\": \"France\",\t\r\n            \"city\": \"Aubière\",\r\n            \"road\": \"par là\"\r\n        } \r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -308,7 +466,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
+							"raw": "[\r\n    {\r\n        \"id\": \"64799a8ec40b7a7aad35ac40\",\r\n        \"status\": \"NOT DONE OMFG\",\r\n        \"price\": 66.66,\r\n        \"tip\": 2,\r\n        \"reduction\": 0,\r\n        \"fee\": 1.8,\r\n        \"articles\": [\r\n            {\r\n                \"id\": \"64705dda1fe1d56fab1b17b2\"\r\n            },\r\n            {\r\n                \"id\": \"64705e9520469bd3b59ec539\"\r\n            }\r\n        ],\r\n        \"owner\": {\r\n            \"id\": \"647063c7e4314fe5feca99f2\"\r\n        },\r\n        \"location\": {\r\n            \"point\": {\r\n                \"x\": 45.77,\r\n                \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    },\r\n    {\r\n        \"id\": \"648ffa46ec78d056b34d9dce\",\r\n        \"status\": \"SOME STATUS\",\r\n        \"price\": 13.66,\r\n        \"tip\": 2,\r\n        \"reduction\": 0,\r\n        \"fee\": 1.2,\r\n        \"articles\": [\r\n            {\r\n                \"id\": \"64705e9520469bd3b59ec539\"\r\n            }\r\n        ],\r\n        \"owner\": {\r\n            \"id\": \"647063c7e4314fe5feca99f2\"\r\n        },\r\n        \"location\": {\r\n            \"point\": {\r\n                \"x\": 45.77,\r\n                \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là vraiment\"\r\n            } \r\n        }\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -316,12 +474,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}/{{ORDER_PATH}}",
+							"raw": "{{HOST}}/{{ORDER_PATH}}/all",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
-								"{{ORDER_PATH}}"
+								"{{ORDER_PATH}}",
+								"all"
 							]
 						}
 					},
@@ -411,13 +570,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/647998cb5c47e8017481fb87\n",
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/648b3d0a263a7897b3099e70",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
 								"{{RESTAURANT_PATH}}",
-								"647998cb5c47e8017481fb87\n"
+								"648b3d0a263a7897b3099e70"
 							]
 						}
 					},
@@ -447,7 +606,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/{{RESTAURANT_PATH}}?page=0&limit=3",
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}?page=0&limit=2",
 							"host": [
 								"{{HOST}}"
 							],
@@ -461,8 +620,34 @@
 								},
 								{
 									"key": "limit",
-									"value": "3"
+									"value": "2"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEntity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Chez mémère\",\r\n    \"image\": \"https://www.allier-hotels-restaurants.com/wp-content/uploads/2018/09/photo_restaurant_11345.jpg\",\r\n    \"rate\": 10,\r\n    \"articles\": [\r\n        \"64705dda1fe1d56fab1b17b2\",\r\n        \"64705e9520469bd3b59ec539\"\r\n    ],\r\n    \"categories\": [\r\n        {\r\n            \"name\": \"Cuisine maison\",\r\n            \"image\": \"\"\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"point\": {\r\n            \"x\": 45.77,\r\n            \"y\": 3.08\r\n        },\r\n        \"address\": {\r\n            \"country\": \"France\",\t\r\n            \"city\": \"Aubière\",\r\n            \"road\": \"par là\"\r\n        } \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}"
 							]
 						}
 					},
@@ -475,7 +660,34 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n\r\n    },\r\n    {\r\n        \r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"name\": \"Un restauo\",\r\n        \"image\": \"https://media-cdn.tripadvisor.com/media/photo-s/0b/f0/e6/49/terrasse-haute-chez-memere.jpg\",\r\n        \"rate\": 2,\r\n        \"articles\": [\r\n            {\r\n                \"id\": \"64705dda1fe1d56fab1b17b2\"\r\n            }\r\n        ],\r\n        \"categories\": [\r\n            {\r\n                \"name\": \"KEBAB\",\r\n                \"image\": \"\"\r\n            }\r\n        ],\r\n        \"location\": {\r\n            \"point\": {\r\n                \"x\": 45.77,\r\n                \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    },\r\n    {\r\n        \"name\": \"2 restauo\",\r\n        \"image\": \"https://www.allier-hotels-restaurants.com/wp-content/uploads/2018/09/BB-6.jpg\",\r\n        \"rate\": 1,\r\n        \"articles\": [\r\n            {\r\n                \"id\": \"64705e06ae09d7bf1afc23ff\"\r\n            },\r\n            {\r\n                \"id\": \"64705e5df7e8ac3405332f57\"\r\n            }\r\n        ],\r\n        \"categories\": [\r\n            {\r\n                \"name\": \"KEBAB\",\r\n                \"image\": \"\"\r\n            },\r\n            {\r\n                \"name\": \"JAPONAIS\",\r\n                \"image\": \"\"\r\n            }\r\n        ],\r\n        \"location\": {\r\n            \"point\": {\r\n                \"x\": 45.77,\r\n                \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutEntity",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"648b3d0a263a7897b3099e70\",\r\n    \"name\": \"C4EST CHEZ PATRICK\",\r\n    \"image\": \"https://media-cdn.tripadvisor.com/media/photo-s/16/54/07/1c/chez-patrick-un-havre.jpg\",\r\n    \"rate\": 10,\r\n    \"articles\": [\r\n        {\r\n            \"id\": \"64705dda1fe1d56fab1b17b2\"\r\n        }\r\n    ],\r\n    \"categories\": [\r\n        {\r\n            \"name\": \"KEBAB\",\r\n            \"image\": \"\"\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"point\": {\r\n            \"x\": 45.77,\r\n            \"y\": 3.08\r\n        },\r\n        \"address\": {\r\n            \"country\": \"France\",\t\r\n            \"city\": \"Aubière\",\r\n            \"road\": \"par là\"\r\n        } \r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -501,7 +713,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
+							"raw": "[\r\n    {\r\n        \"id\": \"648b3d0a263a7897b3099e70\",\r\n        \"name\": \"C4EST CHEZ PATRICK\",\r\n        \"image\": \"https://media-cdn.tripadvisor.com/media/photo-s/16/54/07/1c/chez-patrick-un-havre.jpg\",\r\n        \"rate\": 10,\r\n        \"articles\": [\r\n            {\r\n                \"id\": \"64705dda1fe1d56fab1b17b2\"\r\n            }\r\n        ],\r\n        \"categories\": [\r\n            {\r\n                \"name\": \"KEBAB\",\r\n                \"image\": \"\"\r\n            }\r\n        ],\r\n        \"location\": {\r\n            \"point\": {\r\n                \"x\": 45.77,\r\n                \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    },\r\n    {\r\n        \"id\": \"648b3d0a263a7897b3099e71\",\r\n        \"name\": \"LE PATOCHE\",\r\n        \"image\": \"https://media-cdn.tripadvisor.com/media/photo-s/16/54/07/1c/chez-patrick-un-havre.jpg\",\r\n        \"rate\": 10,\r\n        \"articles\": [\r\n            {\r\n                \"id\": \"64705e06ae09d7bf1afc23ff\"\r\n            },\r\n            {\r\n                \"id\": \"64705e5df7e8ac3405332f57\"\r\n            }\r\n        ],\r\n        \"categories\": [\r\n            {\r\n                \"name\": \"KEBAB\",\r\n                \"image\": \"\"\r\n            },\r\n            {\r\n                \"name\": \"JAPONAIS\",\r\n                \"image\": \"\"\r\n            }\r\n        ],\r\n        \"location\": {\r\n            \"point\": {\r\n                \"x\": 45.77,\r\n                \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -509,12 +721,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}/{{RESTAURANT_PATH}}",
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/all",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
-								"{{RESTAURANT_PATH}}"
+								"{{RESTAURANT_PATH}}",
+								"all"
 							]
 						}
 					},
@@ -526,13 +739,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/{{ORDER_PATH}}/647998cb5c47e8017481fb87",
+							"raw": "{{HOST}}/{{ORDER_PATH}}/648b3d0a263a7897b3099e70",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
 								"{{ORDER_PATH}}",
-								"647998cb5c47e8017481fb87"
+								"648b3d0a263a7897b3099e70"
 							]
 						}
 					},
@@ -640,7 +853,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/{{USER_PATH}}?page=0&limit=3",
+							"raw": "{{HOST}}/{{USER_PATH}}?page=0&limit=2",
 							"host": [
 								"{{HOST}}"
 							],
@@ -654,8 +867,34 @@
 								},
 								{
 									"key": "limit",
-									"value": "3"
+									"value": "2"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEntity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Jean\",\r\n    \"lastName\": \"Kevin\",\r\n    \"locations\": [\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\r\n                \"city\": \"Clermont-Ferrand\",\r\n                \"road\": \"Quelque part\"\r\n            } \r\n        },\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}"
 							]
 						}
 					},
@@ -668,7 +907,34 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstname\": \"Jean\",\r\n    \"lastname\": \"Kevin\",\r\n    \"locations\": [\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\r\n                \"city\": \"Clermont-Ferrand\",\r\n                \"road\": \"Quelque part\"\r\n            } \r\n        },\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    ]\r\n}",
+							"raw": "[\r\n    {\r\n        \"firstName\": \"Jean\",\r\n        \"lastName\": \"Kevin\",\r\n        \"locations\": [\r\n            {\r\n                \"point\": {\r\n                    \"x\": 45.77,\r\n                    \"y\": 3.08\r\n                },\r\n                \"address\": {\r\n                    \"country\": \"France\",\r\n                    \"city\": \"Clermont-Ferrand\",\r\n                    \"road\": \"Quelque part\"\r\n                } \r\n            },\r\n            {\r\n                \"point\": {\r\n                    \"x\": 45.77,\r\n                    \"y\": 3.08\r\n                },\r\n                \"address\": {\r\n                    \"country\": \"France\",\t\r\n                    \"city\": \"Aubière\",\r\n                    \"road\": \"par là\"\r\n                } \r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"firstName\": \"Jean\",\r\n        \"lastName\": \"Claude\",\r\n        \"locations\": [\r\n            {\r\n                \"point\": {\r\n                    \"x\": 45.77,\r\n                    \"y\": 3.08\r\n                },\r\n                \"address\": {\r\n                    \"country\": \"France\",\r\n                    \"city\": \"Clermont-Ferrand\",\r\n                    \"road\": \"Quelque part\"\r\n                } \r\n            },\r\n            {\r\n                \"point\": {\r\n                    \"x\": 45.77,\r\n                    \"y\": 3.08\r\n                },\r\n                \"address\": {\r\n                    \"country\": \"France\",\t\r\n                    \"city\": \"Aubière\",\r\n                    \"road\": \"par là\"\r\n                } \r\n            }\r\n        ]\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutEntity",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"6470641c251dad7b4fc1dc00\",\r\n    \"firstName\": \"Marque\",\r\n    \"lastName\": \"Chevaldonnais\",\r\n    \"locations\": [\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Clermont-Ferrand\",\r\n                \"road\": \"Quelque part\"\r\n            } \r\n        },\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -694,7 +960,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"6470641c251dad7b4fc1dc00\",\r\n    \"firstname\": \"Marc\",\r\n    \"lastname\": \"Chevaldonne\",\r\n    \"locations\": [\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Clermont-Ferrand\",\r\n                \"road\": \"Quelque part\"\r\n            } \r\n        },\r\n        {\r\n            \"point\": {\r\n\t\t        \"x\": 45.77,\r\n\t\t        \"y\": 3.08\r\n            },\r\n            \"address\": {\r\n                \"country\": \"France\",\t\r\n                \"city\": \"Aubière\",\r\n                \"road\": \"par là\"\r\n            } \r\n        }\r\n    ]\r\n}",
+							"raw": "[\r\n    {\r\n        \"id\": \"6470641c251dad7b4fc1dc00\",\r\n        \"firstName\": \"Marque\",\r\n        \"lastName\": \"Chevaldonnais\",\r\n        \"locations\": [\r\n            {\r\n                \"point\": {\r\n                    \"x\": 45.77,\r\n                    \"y\": 3.08\r\n                },\r\n                \"address\": {\r\n                    \"country\": \"France\",\t\r\n                    \"city\": \"Clermont-Ferrand\",\r\n                    \"road\": \"Quelque part\"\r\n                } \r\n            },\r\n            {\r\n                \"point\": {\r\n                    \"x\": 45.77,\r\n                    \"y\": 3.08\r\n                },\r\n                \"address\": {\r\n                    \"country\": \"France\",\t\r\n                    \"city\": \"Aubière\",\r\n                    \"road\": \"par là\"\r\n                } \r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"id\": \"647063c7e4314fe5feca99f2\",\r\n        \"firstName\": \"Valenting\",\r\n        \"lastName\": \"Clergues\",\r\n        \"locations\": [\r\n            {\r\n                \"point\": {\r\n                    \"x\": 45.77,\r\n                    \"y\": 3.08\r\n                },\r\n                \"address\": {\r\n                    \"country\": \"France\",\t\r\n                    \"city\": \"Clermont-Ferrand\",\r\n                    \"road\": \"Quelque part\"\r\n                } \r\n            },\r\n            {\r\n                \"point\": {\r\n                    \"x\": 45.77,\r\n                    \"y\": 3.08\r\n                },\r\n                \"address\": {\r\n                    \"country\": \"France\",\t\r\n                    \"city\": \"Aubière\",\r\n                    \"road\": \"par là\"\r\n                } \r\n            }\r\n        ]\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -702,12 +968,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}/{{USER_PATH}}",
+							"raw": "{{HOST}}/{{USER_PATH}}/all",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
-								"{{USER_PATH}}"
+								"{{USER_PATH}}",
+								"all"
 							]
 						}
 					},
@@ -781,67 +1048,6 @@
 							"path": [
 								"{{USER_PATH}}",
 								"count"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Admin",
-			"item": [
-				{
-					"name": "Setup",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{HOST}}/admin/setup",
-							"host": [
-								"{{HOST}}"
-							],
-							"path": [
-								"admin",
-								"setup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CreateStubs",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{HOST}}/admin/stub/all",
-							"host": [
-								"{{HOST}}"
-							],
-							"path": [
-								"admin",
-								"stub",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DropDataBase",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{HOST}}/admin/drop/all",
-							"host": [
-								"{{HOST}}"
-							],
-							"path": [
-								"admin",
-								"drop",
-								"all"
 							]
 						}
 					},

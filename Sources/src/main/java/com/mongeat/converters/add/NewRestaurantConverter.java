@@ -12,6 +12,9 @@ public class NewRestaurantConverter implements IConverter<NewRestaurant, Restaur
 
     @Override
     public RestaurantEntity toEntity(NewRestaurant object) {
+        if (object == null) {
+            return null;
+        }
         RestaurantEntity restaurantEntity = new RestaurantEntity();
         restaurantEntity.setName(object.getName());
         restaurantEntity.setImage(object.getImage());
@@ -24,6 +27,9 @@ public class NewRestaurantConverter implements IConverter<NewRestaurant, Restaur
 
     @Override
     public NewRestaurant toModel(RestaurantEntity object) {
+        if (object == null) {
+            return null;
+        }
         NewRestaurant restaurant = new NewRestaurant();
         restaurant.setName(object.getName());
         restaurant.setImage(object.getImage());

@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 public class OrderConverter implements IConverter<Order, OrderEntity> {
     @Override
     public OrderEntity toEntity(Order object) {
+        if (object == null) {
+            return null;
+        }
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setId(object.getId());
         orderEntity.setStatus(object.getStatus());
@@ -25,6 +28,9 @@ public class OrderConverter implements IConverter<Order, OrderEntity> {
 
     @Override
     public Order toModel(OrderEntity object) {
+        if (object == null) {
+            return null;
+        }
         Order order = new Order();
         order.setId(object.getId());
         order.setStatus(object.getStatus());

@@ -7,6 +7,9 @@ public class ArticleConverter implements IConverter<Article, ArticleEntity> {
 
     @Override
     public ArticleEntity toEntity(Article object) {
+        if (object == null) {
+            return null;
+        }
         ArticleEntity articleEntity = new ArticleEntity();
         articleEntity.setId(object.getId());
         articleEntity.setName(object.getName());
@@ -17,6 +20,9 @@ public class ArticleConverter implements IConverter<Article, ArticleEntity> {
 
     @Override
     public Article toModel(ArticleEntity object) {
+        if (object == null) {
+            return null;
+        }
         Article article = new Article();
         article.setId(object.getId());
         article.setName(object.getName());

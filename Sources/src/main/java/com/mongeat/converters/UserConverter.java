@@ -7,6 +7,9 @@ import com.mongeat.models.User;
 public class UserConverter implements IConverter<User, UserEntity> {
     @Override
     public UserEntity toEntity(User object) {
+        if (object == null) {
+            return null;
+        }
         UserEntity userEntity = new UserEntity();
         userEntity.setId(object.getId());
         userEntity.setFirstName(object.getFirstName());
@@ -17,6 +20,9 @@ public class UserConverter implements IConverter<User, UserEntity> {
 
     @Override
     public User toModel(UserEntity object) {
+        if (object == null) {
+            return null;
+        }
         User user = new User();
         user.setId(object.getId());
         user.setFirstName(object.getFirstName());

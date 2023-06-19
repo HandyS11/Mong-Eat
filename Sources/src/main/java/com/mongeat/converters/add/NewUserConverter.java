@@ -9,6 +9,9 @@ public class NewUserConverter implements IConverter<NewUser, UserEntity> {
 
     @Override
     public UserEntity toEntity(NewUser object) {
+        if (object == null) {
+            return null;
+        }
         UserEntity userEntity = new UserEntity();
         userEntity.setFirstName(object.getFirstName());
         userEntity.setLastName(object.getLastName());
@@ -18,6 +21,9 @@ public class NewUserConverter implements IConverter<NewUser, UserEntity> {
 
     @Override
     public NewUser toModel(UserEntity object) {
+        if (object == null) {
+            return null;
+        }
         NewUser user = new NewUser();
         user.setFirstName(object.getFirstName());
         user.setLastName(object.getLastName());

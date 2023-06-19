@@ -12,9 +12,9 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
-    private GenericService<M, MA, E> service;
-    private IMapper<M, D> mapper;
-    private IMapper<MA, DA> postMapper;
+    protected GenericService<M, MA, E> service;
+    protected IMapper<M, D> mapper;
+    protected IMapper<MA, DA> postMapper;
 
     protected void setService(@NonNull GenericService<M, MA, E> service) {
         this.service = service;

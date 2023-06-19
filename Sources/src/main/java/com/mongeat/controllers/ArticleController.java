@@ -11,6 +11,10 @@ import com.mongeat.services.ArticleService;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/articles")
 public class ArticleController extends GenericController<ArticleDto, NewArticleDto, Article, NewArticle, ArticleEntity> {
@@ -23,5 +27,19 @@ public class ArticleController extends GenericController<ArticleDto, NewArticleD
         setService(articleService);
         setMapper(new ArticleMapper());
         setPostMapper(new NewArticleMapper());
+    }
+
+    @Path("/byName/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByName(@PathParam("name") String name) {
+        Article article = articleService.findByName(name);
+        if (article != null) {
+            return Response.ok(mapper.toDto(article)).build();
+        }
+        else {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("Article with name " + name + " not found")
+                    .build();
+        }
     }
 }

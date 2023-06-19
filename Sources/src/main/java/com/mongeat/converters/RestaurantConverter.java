@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 public class RestaurantConverter implements IConverter<Restaurant, RestaurantEntity> {
     @Override
     public RestaurantEntity toEntity(Restaurant object) {
+        if (object == null) {
+            return null;
+        }
         RestaurantEntity restaurantEntity = new RestaurantEntity();
         restaurantEntity.setId(object.getId());
         restaurantEntity.setName(object.getName());
@@ -24,6 +27,9 @@ public class RestaurantConverter implements IConverter<Restaurant, RestaurantEnt
 
     @Override
     public Restaurant toModel(RestaurantEntity object) {
+        if (object == null) {
+            return null;
+        }
         Restaurant restaurant = new Restaurant();
         restaurant.setId(object.getId());
         restaurant.setName(object.getName());

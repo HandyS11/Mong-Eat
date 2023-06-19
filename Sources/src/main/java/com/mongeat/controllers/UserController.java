@@ -11,6 +11,10 @@ import com.mongeat.services.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/users")
 public class UserController extends GenericController<UserDto, NewUserDto, User, NewUser, UserEntity> {
@@ -23,5 +27,19 @@ public class UserController extends GenericController<UserDto, NewUserDto, User,
         setService(userService);
         setMapper(new UserMapper());
         setPostMapper(new NewUserMapper());
+    }
+
+    @Path("/byName/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByName(@PathParam("name") String name) {
+        User user = userService.findByName(name);
+        if (user != null) {
+            return Response.ok(mapper.toDto(user)).build();
+        }
+        else {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("User with name " + name + " not found")
+                    .build();
+        }
     }
 }

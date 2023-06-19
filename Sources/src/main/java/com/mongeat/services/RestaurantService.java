@@ -71,4 +71,8 @@ public class RestaurantService extends GenericService<Restaurant, NewRestaurant,
         restaurant.getArticles().forEach(articleId -> articles.add(articleConverter.toModel(articleRepository.findById(articleId))));
         return articles;
     }
+
+    public Restaurant findByName(String name) {
+        return converter.toModel(restaurantRepository.findByName(name));
+    }
 }

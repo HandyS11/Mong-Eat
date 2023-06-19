@@ -8,6 +8,9 @@ public class NewArticleConverter implements IConverter<NewArticle, ArticleEntity
 
     @Override
     public ArticleEntity toEntity(NewArticle object) {
+        if (object == null) {
+            return null;
+        }
         ArticleEntity articleEntity = new ArticleEntity();
         articleEntity.setName(object.getName());
         articleEntity.setImage(object.getImage());
@@ -17,6 +20,9 @@ public class NewArticleConverter implements IConverter<NewArticle, ArticleEntity
 
     @Override
     public NewArticle toModel(ArticleEntity object) {
+        if (object == null) {
+            return null;
+        }
         NewArticle article = new NewArticle();
         article.setName(object.getName());
         article.setImage(object.getImage());

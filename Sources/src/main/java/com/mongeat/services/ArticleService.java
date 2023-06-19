@@ -21,4 +21,8 @@ public class ArticleService extends GenericService<Article, NewArticle, ArticleE
         setConverter(new ArticleConverter());
         setAddConverter(new NewArticleConverter());
     }
+
+    public Article findByName(String name) {
+        return converter.toModel(articleRepository.findByName(name));
+    }
 }

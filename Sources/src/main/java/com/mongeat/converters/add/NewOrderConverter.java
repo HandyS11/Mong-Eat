@@ -9,6 +9,9 @@ public class NewOrderConverter implements IConverter<NewOrder, OrderEntity> {
 
     @Override
     public OrderEntity toEntity(NewOrder object) {
+        if (object == null) {
+            return null;
+        }
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setStatus(object.getStatus());
         orderEntity.setPrice(object.getPrice());
@@ -23,6 +26,9 @@ public class NewOrderConverter implements IConverter<NewOrder, OrderEntity> {
 
     @Override
     public NewOrder toModel(OrderEntity object) {
+        if (object == null) {
+            return null;
+        }
         NewOrder order = new NewOrder();
         order.setStatus(object.getStatus());
         order.setPrice(object.getPrice());

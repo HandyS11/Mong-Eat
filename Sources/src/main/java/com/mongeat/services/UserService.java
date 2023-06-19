@@ -21,4 +21,8 @@ public class UserService extends GenericService<User, NewUser, UserEntity> {
         setConverter(new UserConverter());
         setAddConverter(new NewUserConverter());
     }
+
+    public User findByName(String name) {
+        return converter.toModel(userRepository.findByName(name));
+    }
 }

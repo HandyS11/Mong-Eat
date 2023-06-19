@@ -1,0 +1,50 @@
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  event:
+    - push
+
+steps:
+  # Build
+  - name: build-docker-codefirst-support-api
+    image: plugins/docker
+    settings:
+      dockerfile: ./Sources/src/main/docker/Dockerfile-custom.native-micro
+      context: src/api/
+      registry: hub.codefirst.iut.uca.fr
+      repo: hub.codefirst.iut.uca.fr/valentin.clergue/codefirst-support
+      username:
+        from_secret: SECRET_REGISTRY_USERNAME
+      password:
+        from_secret: SECRET_REGISTRY_PASSWORD
+
+  # Database
+  - name: deploy-container-mongodb
+    image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-dockerproxy-clientdrone:latest
+    environment:
+      IMAGENAME: mongo
+      CONTAINERNAME: codefirst-support-mongodb
+      COMMAND: create
+      OVERWRITE: true
+      PRIVATE: true
+      ADMINS: valentinclergue,mathisribemont
+    when:
+      branch:
+        - master
+    depends_on: [ build-docker-codefirst-support-api ]
+
+  # Api
+  - name: deploy-codefirst-support-api-container
+    image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-dockerproxy-clientdrone:latest
+    environment:
+      IMAGENAME: hub.codefirst.iut.uca.fr/valentin.clergue/codefirst-support
+      CONTAINERNAME: codefirst-support-api
+      COMMAND: create
+      OVERWRITE: true
+      ADMINS: valentinclergue,mathisribemont
+    when:
+      branch:
+        - master
+    depends_on: [ build-docker-codefirst-support-api ]

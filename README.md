@@ -1,3 +1,5 @@
+[![Build Status](https://codefirst.iut.uca.fr/api/badges/React-if/Mong-eat/status.svg)](https://codefirst.iut.uca.fr/React-if/Mong-eat)
+
 # Mong-eat
 
 A Quarkus API for a MongoDB database.

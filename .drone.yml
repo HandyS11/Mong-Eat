@@ -12,7 +12,7 @@ steps:
     image: plugins/docker
     settings:
       dockerfile: ./Sources/src/main/docker/Dockerfile-custom.native-micro
-      context: src/api/
+      context: ./Sources/
       registry: hub.codefirst.iut.uca.fr
       repo: hub.codefirst.iut.uca.fr/valentin.clergue/codefirst-support
       username:

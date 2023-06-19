@@ -9,18 +9,23 @@ import jakarta.ws.rs.core.Response;
 import lombok.NonNull;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class GenericController<D, M, E extends GenericEntity> {
-    protected GenericService<M, E> service;
-    protected IMapper<M, D> mapper;
+public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
+    private GenericService<M, MA, E> service;
+    private IMapper<M, D> mapper;
+    private IMapper<MA, DA> postMapper;
 
-    public void setService(@NonNull GenericService<M, E> service) {
+    protected void setService(@NonNull GenericService<M, MA, E> service) {
         this.service = service;
     }
-    public void setMapper(@NonNull IMapper<M, D> mapper) {
+
+    protected void setMapper(@NonNull IMapper<M, D> mapper) {
         this.mapper = mapper;
+    }
+
+    protected void setPostMapper(@NonNull IMapper<MA, DA> postMapper) {
+        this.postMapper = postMapper;
     }
 
     @GET
@@ -60,9 +65,9 @@ public abstract class GenericController<D, M, E extends GenericEntity> {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response insert(D dto) {
+    public Response insert(DA dto) {
         try {
-            service.insert(mapper.toModel(dto));
+            service.insert(postMapper.toModel(dto));
             return Response.status(Response.Status.CREATED)
                            .build();
         } catch (IllegalArgumentException e) {
@@ -72,12 +77,13 @@ public abstract class GenericController<D, M, E extends GenericEntity> {
         }
     }
 
-    @POST
+    //TODO: not working (it might be a parsing problem)
+    /*@POST
     @Path("/all")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response insertAll(Collection<D> dtos) {
+    public Response insertAll(Collection<DA> dtos) {
         try {
-            List<M> models = dtos.stream().map(d -> mapper.toModel(d)).collect(Collectors.toList());
+            List<MA> models = dtos.stream().map(d -> postMapper.toModel(d)).collect(Collectors.toList());
             service.insertAll(models);
             return Response.status(Response.Status.CREATED)
                             .build();
@@ -86,7 +92,7 @@ public abstract class GenericController<D, M, E extends GenericEntity> {
                            .entity(e.getMessage())
                            .build();
         }
-    }
+    }*/
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
@@ -101,13 +107,14 @@ public abstract class GenericController<D, M, E extends GenericEntity> {
         }
     }
 
-    //TODO: not working (it may be a parsing problem)
+    //TODO: not working (it might be a parsing problem)
     /*@PUT
     @Path("/all")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateAll(Collection<D> dtos) {
         try {
-            service.updateAll(dtos.stream().map(d -> mapper.toModel(d)).collect(Collectors.toList()));
+            List<M> models = dtos.stream().map(d -> mapper.toModel(d)).collect(Collectors.toList());
+            service.updateAll(models);
             return Response.ok().build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)

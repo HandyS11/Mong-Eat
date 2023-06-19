@@ -3,9 +3,11 @@ package com.mongeat.services;
 import com.mongeat.converters.ArticleConverter;
 import com.mongeat.converters.OrderConverter;
 import com.mongeat.converters.UserConverter;
+import com.mongeat.converters.add.NewOrderConverter;
 import com.mongeat.entities.OrderEntity;
 import com.mongeat.models.Article;
 import com.mongeat.models.Order;
+import com.mongeat.models.add.NewOrder;
 import com.mongeat.repositories.ArticleRepository;
 import com.mongeat.repositories.OrderRepository;
 import com.mongeat.repositories.UserRepository;
@@ -19,7 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Singleton
-public class OrderService extends GenericService<Order, OrderEntity> {
+public class OrderService extends GenericService<Order, NewOrder, OrderEntity> {
     @Inject
     OrderRepository orderRepository;
     @Inject
@@ -34,6 +36,7 @@ public class OrderService extends GenericService<Order, OrderEntity> {
     public void init() {
         setRepository(orderRepository);
         setConverter(new OrderConverter());
+        setAddConverter(new NewOrderConverter());
     }
 
     @Override

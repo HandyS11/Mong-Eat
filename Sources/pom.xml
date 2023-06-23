@@ -92,8 +92,8 @@
         </executions>
         <configuration>
           <container-image>
-            <group>com.mongeat</group> <!-- Remplacez par votre groupe d'image de conteneur -->
-            <name>mong-eat</name> <!-- Remplacez par le nom de votre image -->
+            <group>com.mongeat</group>
+            <name>mong-eat</name>
           </container-image>
         </configuration>
       </plugin>

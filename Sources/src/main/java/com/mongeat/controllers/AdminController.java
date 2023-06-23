@@ -11,6 +11,12 @@ public class AdminController {
     @Inject
     AdminService adminService;
 
+    /**
+     * Creates a stub for the given entity.
+     *
+     * @param entity The entity type to create a stub for.
+     * @return A Response object containing a success or error message.
+     */
     @GET
     @Path("/stub/{entity}")
     public Response loadStub(@PathParam("entity") String entity) {
@@ -20,6 +26,12 @@ public class AdminController {
         return Response.serverError().build();
     }
 
+    /**
+     * Drops the given entity.
+     *
+     * @param entity The entity type to drop.
+     * @return A Response object containing a success or error message.
+     */
     @DELETE
     @Path("/drop/{entity}")
     public Response dropAll(@PathParam("entity") String entity) {
@@ -27,6 +39,11 @@ public class AdminController {
         return Response.ok().build();
     }
 
+    /**
+     * Sets up the database with some data.
+     *
+     * @return A Response object containing a success or error message.
+     */
     @GET
     @Path("setup")
     public Response setup() {

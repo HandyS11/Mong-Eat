@@ -7,9 +7,17 @@ import com.mongeat.models.Restaurant;
 
 import java.util.stream.Collectors;
 
+/**
+ * Map Restaurant to RestaurantDto and vice versa
+ */
 public class RestaurantMapper implements IMapper<Restaurant, RestaurantDto> {
     ArticleMapper articleMapper = new ArticleMapper();
 
+    /**
+     * Map Restaurant to RestaurantDto
+     * @param object Restaurant
+     * @return RestaurantDto
+     */
     @Override
     public RestaurantDto toDto(Restaurant object) {
         RestaurantDto restaurantDto = new RestaurantDto();
@@ -23,6 +31,11 @@ public class RestaurantMapper implements IMapper<Restaurant, RestaurantDto> {
         return restaurantDto;
     }
 
+    /**
+     * Map RestaurantDto to Restaurant
+     * @param object RestaurantDto
+     * @return Restaurant
+     */
     @Override
     public Restaurant toModel(RestaurantDto object) {
         Restaurant restaurant = new Restaurant();

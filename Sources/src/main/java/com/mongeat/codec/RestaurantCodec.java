@@ -15,13 +15,25 @@ import org.bson.types.ObjectId;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Utility class for RestaurantEntity
+ */
 public class RestaurantCodec implements Codec<RestaurantEntity> {
     private final Codec<Document> documentCodec;
 
+    /**
+     * Constructor
+     */
     public RestaurantCodec() {
         this.documentCodec = MongoClientSettings.getDefaultCodecRegistry().get(Document.class);
     }
 
+    /**
+     * Encode a RestaurantEntity into a Document
+     * @param writer the writer to use
+     * @param restaurant the RestaurantEntity to encode
+     * @param encoderContext the encoder context to use
+     */
     @Override
     public void encode(BsonWriter writer, RestaurantEntity restaurant, EncoderContext encoderContext) {
         Document doc = new Document();
@@ -37,11 +49,21 @@ public class RestaurantCodec implements Codec<RestaurantEntity> {
         documentCodec.encode(writer, doc, encoderContext);
     }
 
+    /**
+     * Get the class of the encoded object
+     * @return the class of the encoded object
+     */
     @Override
     public Class<RestaurantEntity> getEncoderClass() {
         return RestaurantEntity.class;
     }
 
+    /**
+     * Decode a Document into a RestaurantEntity
+     * @param reader the reader to use
+     * @param decoderContext the decoder context to use
+     * @return the decoded RestaurantEntity
+     */
     @Override
     public RestaurantEntity decode(BsonReader reader, DecoderContext decoderContext) {
         Document document = documentCodec.decode(reader, decoderContext);

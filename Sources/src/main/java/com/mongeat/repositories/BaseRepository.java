@@ -10,12 +10,18 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 
+/**
+ * BaseRepository
+ */
 public abstract class BaseRepository {
     static final String DB_NAME = "MongEat";
     static final String CONNECTION_STRING = "mongodb://localhost:27017";
 
     public final MongoDatabase database;
 
+    /**
+     * Constructor
+     */
     protected BaseRepository() {
         CodecRegistry defaultCodecRegistry = MongoClientSettings.getDefaultCodecRegistry();
         CodecRegistry pojoCodecRegistry = CodecRegistries.fromCodecs(

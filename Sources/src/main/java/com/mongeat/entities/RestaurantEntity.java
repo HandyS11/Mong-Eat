@@ -9,6 +9,9 @@ import org.bson.types.ObjectId;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RestaurantEntity
+ */
 @Getter
 @Setter
 public class RestaurantEntity extends GenericEntity {
@@ -26,6 +29,13 @@ public class RestaurantEntity extends GenericEntity {
         super(new ObjectId().toHexString());
     }
 
+    /**
+     * @param id Id of the restaurant
+     * @param name Name of the restaurant
+     * @param image Url of the image
+     * @param rate Rate of the restaurant
+     * @param location LocationEntity
+     */
     public RestaurantEntity(String id, String name, String image, double rate, LocationEntity location) {
         super(id);
         this.name = name;
@@ -34,6 +44,15 @@ public class RestaurantEntity extends GenericEntity {
         this.location = location;
     }
 
+    /**
+     * @param id Id of the restaurant
+     * @param name Name of the restaurant
+     * @param image Url of the image
+     * @param rate Rate of the restaurant
+     * @param articles List of articles
+     * @param categories List of categories
+     * @param location LocationEntity
+     */
     public RestaurantEntity(String id, String name, String image, double rate, List<String> articles, List<CategoryEntity> categories, LocationEntity location) {
         this(id, name, image, rate, location);
         this.articles.addAll(articles);

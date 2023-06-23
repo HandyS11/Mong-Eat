@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 
+/**
+ * ArticleEntity
+ */
 @Getter
 @Setter
 public class ArticleEntity extends GenericEntity {
@@ -17,6 +20,12 @@ public class ArticleEntity extends GenericEntity {
         super(new ObjectId().toHexString());
     }
 
+    /**
+     * @param id Id of the article
+     * @param name Name of the article
+     * @param image Url of the image
+     * @param price Price of the article
+     */
     public ArticleEntity(String id, String name, String image, double price) {
         super(id);
         this.name = name;

@@ -11,23 +11,52 @@ import lombok.NonNull;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+/**
+ * An abstract controller class providing CRUD operations for entities.
+ * The specific type of entity is defined by the generic parameter E, which extends GenericEntity.
+ * The specific type of model is defined by the generic parameter M.
+ * The specific type of model for insertion is defined by the generic parameter MA.
+ * The specific type of DTO is defined by the generic parameter D.
+ * The specific type of DTO for insertion is defined by the generic parameter DA.
+ */
 public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
     protected GenericService<M, MA, E> service;
     protected IMapper<M, D> mapper;
     protected IMapper<MA, DA> postMapper;
 
+    /**
+     * Sets the service to be used by this controller.
+     *
+     * @param service The service to be used by this controller.
+     */
     protected void setService(@NonNull GenericService<M, MA, E> service) {
         this.service = service;
     }
 
+    /**
+     * Sets the mapper to be used by this controller.
+     *
+     * @param mapper The mapper to be used by this controller.
+     */
     protected void setMapper(@NonNull IMapper<M, D> mapper) {
         this.mapper = mapper;
     }
 
+    /**
+     * Sets the post mapper to be used by this controller.
+     *
+     * @param postMapper The post mapper to be used by this controller.
+     */
     protected void setPostMapper(@NonNull IMapper<MA, DA> postMapper) {
         this.postMapper = postMapper;
     }
 
+    /**
+     * Retrieves an entity by its ID.
+     *
+     * @param id The ID of the entity to retrieve.
+     * @return A Response object containing the entity, or an error message if the entity does not exist.
+     */
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -49,6 +78,11 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
         }
     }
 
+    /**
+     * Retrieves all entities.
+     *
+     * @return A Response object containing a list of all entities.
+     */
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
@@ -57,12 +91,25 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
         return Response.ok(models.stream().map(m -> mapper.toDto(m)).collect(Collectors.toList())).build();
     }
 
+    /**
+     * Retrieves a paginated list of entities.
+     *
+     * @param page The page number.
+     * @param limit The number of entities per page.
+     * @return A Response object containing a paginated list of entities.
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPaginated(@QueryParam("page") int page, @QueryParam("limit") int limit) {
         return Response.ok(service.getPaginated(page, limit)).build();
     }
 
+    /**
+     * Inserts an entity.
+     *
+     * @param dto The DTO containing the entity to insert.
+     * @return A Response object containing the inserted entity, or an error message if the entity could not be inserted.
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response insert(DA dto) {
@@ -94,6 +141,12 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
         }
     }*/
 
+    /**
+     * Updates an entity.
+     *
+     * @param dto The DTO containing the entity to update.
+     * @return A Response object containing the updated entity, or an error message if the entity could not be updated.
+     */
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(D dto) {
@@ -123,6 +176,12 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
         }
     }*/
 
+    /**
+     * Deletes an entity by its ID.
+     *
+     * @param id The ID of the entity to delete.
+     * @return A Response object containing the deleted entity, or an error message if the entity could not be deleted.
+     */
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") String id) {
@@ -136,6 +195,11 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
         }
     }
 
+    /**
+     * Deletes all entities.
+     *
+     * @return A Response object containing the deleted entities, or an error message if the entities could not be deleted.
+     */
     @DELETE
     @Path("/all")
     public Response deleteAll() {
@@ -149,6 +213,11 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
         }
     }
 
+    /**
+     * Deletes all entities.
+     *
+     * @return A Response object containing the deleted entities, or an error message if the entities could not be deleted.
+     */
     @DELETE
     @Path("/drop")
     public Response drop() {
@@ -162,6 +231,12 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
         }
     }
 
+    /**
+     * Checks if an entity exists by its ID.
+     *
+     * @param id The ID of the entity to check.
+     * @return A Response object containing a boolean indicating whether the entity exists, or an error message if the ID is invalid.
+     */
     @GET
     @Path("/exists/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -175,6 +250,11 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
         }
     }
 
+    /**
+     * Retrieves the number of entities.
+     *
+     * @return A Response object containing the number of entities.
+     */
     @GET
     @Path("/count")
     @Produces(MediaType.APPLICATION_JSON)

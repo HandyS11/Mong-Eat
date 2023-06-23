@@ -3,6 +3,9 @@ package com.mongeat.dtos.add;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * DTO for adding a new article
+ */
 @Getter
 @Setter
 public class NewArticleDto {

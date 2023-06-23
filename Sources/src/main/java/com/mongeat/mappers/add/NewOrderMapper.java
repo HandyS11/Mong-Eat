@@ -5,8 +5,16 @@ import com.mongeat.mappers.IMapper;
 import com.mongeat.mappers.parts.LocationMapper;
 import com.mongeat.models.add.NewOrder;
 
+/**
+ * Map NewOrder to NewOrderDto and vice versa
+ */
 public class NewOrderMapper implements IMapper<NewOrder, NewOrderDto> {
 
+    /**
+     * Map NewOrder to NewOrderDto
+     * @param object NewOrder
+     * @return NewOrderDto
+     */
     @Override
     public NewOrderDto toDto(NewOrder object) {
         NewOrderDto orderDto = new NewOrderDto();
@@ -21,6 +29,11 @@ public class NewOrderMapper implements IMapper<NewOrder, NewOrderDto> {
         return orderDto;
     }
 
+    /**
+     * Map NewOrderDto to NewOrder
+     * @param object NewOrderDto
+     * @return NewOrder
+     */
     @Override
     public NewOrder toModel(NewOrderDto object) {
         NewOrder order = new NewOrder();

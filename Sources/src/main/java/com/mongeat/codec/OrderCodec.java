@@ -14,13 +14,25 @@ import org.bson.types.ObjectId;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Utility class for OrderEntity
+ */
 public class OrderCodec implements Codec<OrderEntity> {
     private final Codec<Document> documentCodec;
 
+    /**
+     * Constructor
+     */
     public OrderCodec() {
         this.documentCodec = MongoClientSettings.getDefaultCodecRegistry().get(Document.class);
     }
 
+    /**
+     * Encode a OrderEntity into a Document
+     * @param writer the writer to use
+     * @param order the OrderEntity to encode
+     * @param encoderContext the encoder context to use
+     */
     @Override
     public void encode(BsonWriter writer, OrderEntity order, EncoderContext encoderContext) {
         Document doc = new Document();
@@ -38,11 +50,21 @@ public class OrderCodec implements Codec<OrderEntity> {
         documentCodec.encode(writer, doc, encoderContext);
     }
 
+    /**
+     * Get the class of the encoded object
+     * @return the class of the encoded object
+     */
     @Override
     public Class<OrderEntity> getEncoderClass() {
         return OrderEntity.class;
     }
 
+    /**
+     * Decode a Document into a OrderEntity
+     * @param reader the reader to use
+     * @param decoderContext the decoder context to use
+     * @return the OrderEntity decoded
+     */
     @Override
     public OrderEntity decode(BsonReader reader, DecoderContext decoderContext) {
         Document document = documentCodec.decode(reader, decoderContext);

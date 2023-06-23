@@ -7,6 +7,9 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * NewUser
+ */
 @Getter
 @Setter
 public class NewUser {
@@ -16,11 +19,20 @@ public class NewUser {
 
     public NewUser() { }
 
+    /**
+     * @param firstName First name of the user
+     * @param lastName Last name of the user
+     */
     public NewUser(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+    /**
+     * @param firstName First name of the user
+     * @param lastName Last name of the user
+     * @param locations Locations of the user
+     */
     public NewUser(String firstName, String lastName, List<Location> locations) {
         this(firstName, lastName);
         this.locations.addAll(locations);

@@ -3,8 +3,17 @@ package com.mongeat.converters;
 import com.mongeat.entities.ArticleEntity;
 import com.mongeat.models.Article;
 
+/**
+ * Converts an Article to an ArticleEntity
+ */
 public class ArticleConverter implements IConverter<Article, ArticleEntity> {
 
+    /**
+     * Converts an Article object to an ArticleEntity object.
+     *
+     * @param object The Article object to convert.
+     * @return The ArticleEntity object.
+     */
     @Override
     public ArticleEntity toEntity(Article object) {
         if (object == null) {

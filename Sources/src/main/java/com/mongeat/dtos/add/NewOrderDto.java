@@ -7,6 +7,9 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DTO for adding a new order
+ */
 @Getter
 @Setter
 public class NewOrderDto {

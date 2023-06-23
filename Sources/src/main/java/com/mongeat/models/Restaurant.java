@@ -8,6 +8,9 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Restaurant
+ */
 @Getter
 @Setter
 public class Restaurant extends GenericModel {
@@ -21,6 +24,13 @@ public class Restaurant extends GenericModel {
 
     public Restaurant() { }
 
+    /**
+     * @param id Id of the restaurant
+     * @param name Name of the restaurant
+     * @param image url of the restaurant
+     * @param rate Rate of the restaurant
+     * @param location Location of the restaurant
+     */
     public Restaurant(String id, String name, String image, double rate, Location location) {
         super(id);
         this.name = name;
@@ -29,6 +39,15 @@ public class Restaurant extends GenericModel {
         this.location = location;
     }
 
+    /**
+     * @param id Id of the restaurant
+     * @param name Name of the restaurant
+     * @param image url of the restaurant
+     * @param rate Rate of the restaurant
+     * @param articles Articles of the restaurant
+     * @param categories Categories of the restaurant
+     * @param location Location of the restaurant
+     */
     public Restaurant(String id, String name, String image, double rate, List<Article> articles, List<Category> categories, Location location) {
         this(id, name, image, rate, location);
         this.articles.addAll(articles);

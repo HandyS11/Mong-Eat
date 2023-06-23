@@ -3,6 +3,9 @@ package com.mongeat.models;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Article
+ */
 @Getter
 @Setter
 public class Article extends GenericModel {
@@ -12,6 +15,12 @@ public class Article extends GenericModel {
 
     public Article() {}
 
+    /**
+     * @param id Id of the article
+     * @param name Name of the article
+     * @param image url of the article
+     * @param price Price of the article
+     */
     public Article(String id, String name, String image, double price) {
         super(id);
         this.name = name;

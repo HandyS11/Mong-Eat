@@ -3,8 +3,16 @@ package com.mongeat.mappers;
 import com.mongeat.dtos.ArticleDto;
 import com.mongeat.models.Article;
 
+/**
+ * Map Article to ArticleDto and vice versa
+ */
 public class ArticleMapper implements IMapper<Article, ArticleDto> {
 
+    /**
+     * Map Article to ArticleDto
+     * @param object Article
+     * @return ArticleDto
+     */
     @Override
     public ArticleDto toDto(Article object) {
         ArticleDto articleDto = new ArticleDto();
@@ -15,6 +23,11 @@ public class ArticleMapper implements IMapper<Article, ArticleDto> {
         return articleDto;
     }
 
+    /**
+     * Map ArticleDto to Article
+     * @param object ArticleDto
+     * @return Article
+     */
     @Override
     public Article toModel(ArticleDto object) {
         Article article = new Article();

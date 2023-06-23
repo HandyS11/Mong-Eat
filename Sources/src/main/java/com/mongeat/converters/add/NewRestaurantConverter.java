@@ -8,8 +8,17 @@ import com.mongeat.models.add.NewRestaurant;
 
 import java.util.stream.Collectors;
 
+/**
+ * Converts a NewRestaurant to a RestaurantEntity
+ */
 public class NewRestaurantConverter implements IConverter<NewRestaurant, RestaurantEntity> {
 
+    /**
+     * Converts a NewRestaurant object to a RestaurantEntity object.
+     *
+     * @param object The NewRestaurant object to convert.
+     * @return The RestaurantEntity object.
+     */
     @Override
     public RestaurantEntity toEntity(NewRestaurant object) {
         if (object == null) {
@@ -25,6 +34,12 @@ public class NewRestaurantConverter implements IConverter<NewRestaurant, Restaur
         return restaurantEntity;
     }
 
+    /**
+     * Converts a RestaurantEntity object to a NewRestaurant object.
+     *
+     * @param object The RestaurantEntity object to convert.
+     * @return The NewRestaurant object.
+     */
     @Override
     public NewRestaurant toModel(RestaurantEntity object) {
         if (object == null) {

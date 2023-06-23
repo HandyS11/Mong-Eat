@@ -12,11 +12,17 @@ import jakarta.inject.Singleton;
 
 import java.util.List;
 
+/**
+ * UserService
+ */
 @Singleton
 public class UserService extends GenericService<User, NewUser, UserEntity> {
     @Inject
     UserRepository userRepository;
 
+    /**
+     * Initializes the service.
+     */
     @PostConstruct
     public void init() {
         setRepository(userRepository);
@@ -24,6 +30,12 @@ public class UserService extends GenericService<User, NewUser, UserEntity> {
         setAddConverter(new NewUserConverter());
     }
 
+    /**
+     * Retrieves an user by its name.
+     *
+     * @param name The name of the user to retrieve.
+     * @return A list of users with the given name.
+     */
     public List<User> findByName(String name) {
         return userRepository.findByName(name).stream().map(a -> converter.toModel(a)).collect(java.util.stream.Collectors.toList());
     }

@@ -20,12 +20,18 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * UserController
+ */
 @Path("/users")
 public class UserController extends GenericController<UserDto, NewUserDto, User, NewUser, UserEntity> {
 
     @Inject
     UserService userService;
 
+    /**
+     * Initializes the controller.
+     */
     @PostConstruct
     public void init() {
         setService(userService);
@@ -33,6 +39,12 @@ public class UserController extends GenericController<UserDto, NewUserDto, User,
         setPostMapper(new NewUserMapper());
     }
 
+    /**
+     * Retrieves an user by its name.
+     *
+     * @param name The name of the user to retrieve.
+     * @return A Response object containing the user, or an error message if the user does not exist.
+     */
     @GET
     @Path("/byName/{name}")
     @Produces(MediaType.APPLICATION_JSON)

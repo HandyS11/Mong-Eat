@@ -8,6 +8,9 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * NewRestaurant
+ */
 @Getter
 @Setter
 public class NewRestaurant {
@@ -21,6 +24,12 @@ public class NewRestaurant {
 
     public NewRestaurant() { }
 
+    /**
+     * @param name Name of the restaurant
+     * @param image url of the restaurant
+     * @param rate Rate of the restaurant
+     * @param location Location of the restaurant
+     */
     public NewRestaurant(String name, String image, double rate, Location location) {
         this.name = name;
         this.image = image;
@@ -28,6 +37,14 @@ public class NewRestaurant {
         this.location = location;
     }
 
+    /**
+     * @param name Name of the restaurant
+     * @param image url of the restaurant
+     * @param rate Rate of the restaurant
+     * @param articles Articles of the restaurant
+     * @param categories Categories of the restaurant
+     * @param location Location of the restaurant
+     */
     public NewRestaurant(String name, String image, double rate, List<String> articles, List<Category> categories, Location location) {
         this(name, image, rate, location);
         this.articles.addAll(articles);

@@ -7,7 +7,17 @@ import com.mongeat.models.Order;
 
 import java.util.stream.Collectors;
 
+/**
+ * Converts an Order to an OrderEntity
+ */
 public class OrderConverter implements IConverter<Order, OrderEntity> {
+
+    /**
+     * Converts an Order object to an OrderEntity object.
+     *
+     * @param object The Order object to convert.
+     * @return The OrderEntity object.
+     */
     @Override
     public OrderEntity toEntity(Order object) {
         if (object == null) {
@@ -26,6 +36,12 @@ public class OrderConverter implements IConverter<Order, OrderEntity> {
         return orderEntity;
     }
 
+    /**
+     * Converts an OrderEntity object to an Order object.
+     *
+     * @param object The OrderEntity object to convert.
+     * @return The Order object.
+     */
     @Override
     public Order toModel(OrderEntity object) {
         if (object == null) {

@@ -13,11 +13,17 @@ import jakarta.inject.Singleton;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * ArticleService
+ */
 @Singleton
 public class ArticleService extends GenericService<Article, NewArticle, ArticleEntity> {
     @Inject
     ArticleRepository articleRepository;
 
+    /**
+     * Initializes the service.
+     */
     @PostConstruct
     public void init() {
         setRepository(articleRepository);
@@ -25,6 +31,12 @@ public class ArticleService extends GenericService<Article, NewArticle, ArticleE
         setAddConverter(new NewArticleConverter());
     }
 
+    /**
+     * Retrieves an article by its name.
+     *
+     * @param name The name of the article to retrieve.
+     * @return A list of articles with the given name.
+     */
     public List<Article> findByName(String name) {
         return articleRepository.findByName(name).stream().map(a -> converter.toModel(a)).collect(Collectors.toList());
     }

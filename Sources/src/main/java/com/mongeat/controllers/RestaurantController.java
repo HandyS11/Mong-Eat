@@ -20,12 +20,18 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * RestaurantController
+ */
 @Path("/restaurants")
 public class RestaurantController extends GenericController<RestaurantDto, NewRestaurantDto, Restaurant, NewRestaurant, RestaurantEntity> {
 
     @Inject
     RestaurantService restaurantService;
 
+    /**
+     * Initializes the controller.
+     */
     @PostConstruct
     public void init() {
         setService(restaurantService);
@@ -33,6 +39,12 @@ public class RestaurantController extends GenericController<RestaurantDto, NewRe
         setPostMapper(new NewRestaurantMapper());
     }
 
+    /**
+     * Retrieves a restaurant by its name.
+     *
+     * @param name The name of the restaurant to retrieve.
+     * @return A Response object containing the restaurant, or an error message if the restaurant does not exist.
+     */
     @GET
     @Path("/byName/{name}")
     @Produces(MediaType.APPLICATION_JSON)

@@ -8,6 +8,9 @@ import org.bson.types.ObjectId;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * OrderEntity
+ */
 @Getter
 @Setter
 public class OrderEntity extends GenericEntity {
@@ -27,6 +30,16 @@ public class OrderEntity extends GenericEntity {
         super(new ObjectId().toHexString());
     }
 
+    /**
+     * @param id Id of the order
+     * @param status Status of the order
+     * @param price Price of the order
+     * @param tip Tip of the order
+     * @param reduction Reduction of the order
+     * @param fee Fee of the order
+     * @param owner Id of the owner
+     * @param location LocationEntity
+     */
     public OrderEntity(String id, String status, double price, double tip, double reduction, double fee, String owner, LocationEntity location) {
         super(id);
         this.status = status;
@@ -38,6 +51,17 @@ public class OrderEntity extends GenericEntity {
         this.location = location;
     }
 
+    /**
+     * @param id Id of the order
+     * @param status Status of the order
+     * @param price Price of the order
+     * @param tip Tip of the order
+     * @param reduction Reduction of the order
+     * @param fee Fee of the order
+     * @param articles List of articles
+     * @param owner Id of the owner
+     * @param location LocationEntity
+     */
     public OrderEntity(String id, String status, double price, double tip, double reduction, double fee, List<String> articles, String owner, LocationEntity location) {
         this(id, status, price, tip, reduction, fee, owner, location);
         this.articles.addAll(articles);

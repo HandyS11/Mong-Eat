@@ -5,6 +5,9 @@ import com.mongeat.entities.OrderEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * OrderStub
+ */
 public class OrderStub {
     public final List<OrderEntity> orders = new ArrayList<>();
 
@@ -17,6 +20,10 @@ public class OrderStub {
         orders.add(order2);
         orders.add(order3);
     }
+
+    /**
+     * @return the orders
+     */
     public List<OrderEntity> getOrders() {
         return orders;
     }

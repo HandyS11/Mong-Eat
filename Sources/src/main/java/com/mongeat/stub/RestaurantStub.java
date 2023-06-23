@@ -6,6 +6,9 @@ import com.mongeat.entities.parts.CategoryEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RestaurantStub
+ */
 public class RestaurantStub {
     private final List<RestaurantEntity> restaurants = new ArrayList<>();
 
@@ -19,6 +22,9 @@ public class RestaurantStub {
         restaurants.add(restaurant3);
     }
 
+    /**
+     * @return the restaurants
+     */
     public List<RestaurantEntity> getRestaurants() {
         return restaurants;
     }

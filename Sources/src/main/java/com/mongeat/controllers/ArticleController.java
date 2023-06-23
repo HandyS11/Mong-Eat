@@ -20,12 +20,18 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * ArticleController
+ */
 @Path("/articles")
 public class ArticleController extends GenericController<ArticleDto, NewArticleDto, Article, NewArticle, ArticleEntity> {
 
     @Inject
     ArticleService articleService;
 
+    /**
+     * Initializes the controller.
+     */
     @PostConstruct
     public void init() {
         setService(articleService);
@@ -33,6 +39,12 @@ public class ArticleController extends GenericController<ArticleDto, NewArticleD
         setPostMapper(new NewArticleMapper());
     }
 
+    /**
+     * Retrieves an article by its name.
+     *
+     * @param name The name of the article to retrieve.
+     * @return A Response object containing the article, or an error message if the article does not exist.
+     */
     @GET
     @Path("/byName/{name}")
     @Produces(MediaType.APPLICATION_JSON)

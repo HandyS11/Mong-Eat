@@ -5,8 +5,17 @@ import com.mongeat.converters.parts.LocationConverter;
 import com.mongeat.entities.OrderEntity;
 import com.mongeat.models.add.NewOrder;
 
+/**
+ * Converts a NewOrder to an OrderEntity
+ */
 public class NewOrderConverter implements IConverter<NewOrder, OrderEntity> {
 
+    /**
+     * Converts a NewOrder object to an OrderEntity object.
+     *
+     * @param object The NewOrder object to convert.
+     * @return The OrderEntity object.
+     */
     @Override
     public OrderEntity toEntity(NewOrder object) {
         if (object == null) {
@@ -24,6 +33,12 @@ public class NewOrderConverter implements IConverter<NewOrder, OrderEntity> {
         return orderEntity;
     }
 
+    /**
+     * Converts an OrderEntity object to a NewOrder object.
+     *
+     * @param object The OrderEntity object to convert.
+     * @return The NewOrder object.
+     */
     @Override
     public NewOrder toModel(OrderEntity object) {
         if (object == null) {

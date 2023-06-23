@@ -4,7 +4,17 @@ import com.mongeat.converters.parts.LocationConverter;
 import com.mongeat.entities.UserEntity;
 import com.mongeat.models.User;
 
+/**
+ * Converts a User to a UserEntity
+ */
 public class UserConverter implements IConverter<User, UserEntity> {
+
+    /**
+     * Converts a User object to a UserEntity object.
+     *
+     * @param object The User object to convert.
+     * @return The UserEntity object.
+     */
     @Override
     public UserEntity toEntity(User object) {
         if (object == null) {
@@ -18,6 +28,13 @@ public class UserConverter implements IConverter<User, UserEntity> {
         return userEntity;
     }
 
+
+    /**
+     * Converts a UserEntity object to a User object.
+     *
+     * @param object The UserEntity object to convert.
+     * @return The User object.
+     */
     @Override
     public User toModel(UserEntity object) {
         if (object == null) {

@@ -5,6 +5,9 @@ import com.mongeat.entities.UserEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * UserStub
+ */
 public class UserStub {
     private final List<UserEntity> users = new ArrayList<>();
 
@@ -22,6 +25,9 @@ public class UserStub {
         users.add(user5);
     }
 
+    /**
+     * @return the users
+     */
     public List<UserEntity> getUsers() {
         return users;
     }

@@ -11,9 +11,17 @@ import com.mongeat.stub.RestaurantStub;
 import com.mongeat.stub.UserStub;
 import jakarta.inject.Singleton;
 
+/**
+ * AdminService
+ */
 @Singleton
 public class AdminService extends BaseRepository {
 
+    /**
+     * Drop the database
+     *
+     * @param type Type of the collection to drop
+     */
     public void drop(String type) {
         switch (type) {
             case "all": {
@@ -42,6 +50,12 @@ public class AdminService extends BaseRepository {
         }
     }
 
+    /**
+     * Create stubs
+     *
+     * @param type Type of the stub to create
+     * @return True if the stub has been created
+     */
     public boolean createStub(String type) {
         try {
             switch (type) {
@@ -80,6 +94,11 @@ public class AdminService extends BaseRepository {
         }
     }
 
+    /**
+     * Setup the database
+     *
+     * @return True if the database has been setup
+     */
     public boolean setup() {
         drop("all");
         return createStub("all");

@@ -12,13 +12,15 @@ import com.mongeat.repositories.RestaurantRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
-import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * RestaurantService
+ */
 @Singleton
 public class RestaurantService extends GenericService<Restaurant, NewRestaurant, RestaurantEntity> {
     @Inject
@@ -28,6 +30,9 @@ public class RestaurantService extends GenericService<Restaurant, NewRestaurant,
 
     ArticleConverter articleConverter = new ArticleConverter();
 
+    /**
+     * Initializes the service.
+     */
     @PostConstruct
     public void init() {
         setRepository(restaurantRepository);

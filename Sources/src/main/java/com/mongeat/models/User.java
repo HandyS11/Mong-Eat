@@ -7,6 +7,9 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * User
+ */
 @Getter
 @Setter
 public class User extends GenericModel {
@@ -16,12 +19,23 @@ public class User extends GenericModel {
 
     public User() { }
 
+    /**
+     * @param id Id of the user
+     * @param firstName First name of the user
+     * @param lastName Last name of the user
+     */
     public User(String id, String firstName, String lastName) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+    /**
+     * @param id Id of the user
+     * @param firstName First name of the user
+     * @param lastName Last name of the user
+     * @param locations Locations of the user
+     */
     public User(String id, String firstName, String lastName, List<Location> locations) {
         this(id, firstName, lastName);
         this.locations.addAll(locations);

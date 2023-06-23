@@ -7,6 +7,9 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DTO for order
+ */
 @Getter
 @Setter
 public class OrderDto extends GenericDto {

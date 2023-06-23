@@ -6,10 +6,18 @@ import com.mongeat.models.Order;
 
 import java.util.stream.Collectors;
 
+/**
+ * Map Order to OrderDto and vice versa
+ */
 public class OrderMapper implements IMapper<Order, OrderDto> {
     ArticleMapper articleMapper = new ArticleMapper();
     UserMapper userMapper = new UserMapper();
 
+    /**
+     * Map Order to OrderDto
+     * @param object Order
+     * @return OrderDto
+     */
     @Override
     public OrderDto toDto(Order object) {
         OrderDto orderDto = new OrderDto();
@@ -25,6 +33,11 @@ public class OrderMapper implements IMapper<Order, OrderDto> {
         return orderDto;
     }
 
+    /**
+     * Map OrderDto to Order
+     * @param object OrderDto
+     * @return Order
+     */
     @Override
     public Order toModel(OrderDto object) {
         Order order = new Order();

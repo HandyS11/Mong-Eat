@@ -12,12 +12,18 @@ import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
 
+/**
+ * OrderController
+ */
 @Path("/orders")
 public class OrderController extends GenericController<OrderDto, NewOrderDto, Order, NewOrder, OrderEntity> {
 
     @Inject
     OrderService orderService;
 
+    /**
+     * Initializes the controller.
+     */
     @PostConstruct
     public void init() {
         setService(orderService);

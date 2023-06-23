@@ -20,6 +20,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * OrderService
+ */
 @Singleton
 public class OrderService extends GenericService<Order, NewOrder, OrderEntity> {
     @Inject
@@ -32,6 +35,9 @@ public class OrderService extends GenericService<Order, NewOrder, OrderEntity> {
     ArticleConverter articleConverter = new ArticleConverter();
     UserConverter userConverter = new UserConverter();
 
+    /**
+     * Initializes the service.
+     */
     @PostConstruct
     public void init() {
         setRepository(orderRepository);

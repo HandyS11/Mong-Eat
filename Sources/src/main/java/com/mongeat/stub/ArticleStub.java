@@ -5,6 +5,9 @@ import com.mongeat.entities.ArticleEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ArticleStub
+ */
 public class ArticleStub {
     public final List<ArticleEntity> articles = new ArrayList<>();
 
@@ -24,6 +27,9 @@ public class ArticleStub {
         articles.add(article6);
     }
 
+    /**
+     * @return the articles
+     */
     public List<ArticleEntity> getArticles() {
         return articles;
     }

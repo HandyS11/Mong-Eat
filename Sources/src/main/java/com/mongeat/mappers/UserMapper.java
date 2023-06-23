@@ -6,8 +6,16 @@ import com.mongeat.models.User;
 
 import java.util.stream.Collectors;
 
+/**
+ * Map User to UserDto and vice versa
+ */
 public class UserMapper implements IMapper<User, UserDto> {
 
+    /**
+     * Map User to UserDto
+     * @param object User
+     * @return UserDto
+     */
     @Override
     public UserDto toDto(User object) {
         UserDto userDto = new UserDto();
@@ -18,6 +26,11 @@ public class UserMapper implements IMapper<User, UserDto> {
         return userDto;
     }
 
+    /**
+     * Map UserDto to User
+     * @param object UserDto
+     * @return User
+     */
     @Override
     public User toModel(UserDto object) {
         User user = new User();

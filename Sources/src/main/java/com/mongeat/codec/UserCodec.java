@@ -13,13 +13,25 @@ import org.bson.codecs.EncoderContext;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Codec for the UserEntity class.
+ */
 public class UserCodec implements Codec<UserEntity> {
     private final Codec<Document> documentCodec;
 
+    /**
+     * Constructor.
+     */
     public UserCodec() {
         this.documentCodec = MongoClientSettings.getDefaultCodecRegistry().get(Document.class);
     }
 
+    /**
+     * Encode a UserEntity into a Document.
+     * @param writer the writer to use
+     * @param user the UserEntity to encode
+     * @param encoderContext the encoder context to use
+     */
     @Override
     public void encode(BsonWriter writer, UserEntity user, EncoderContext encoderContext) {
         Document doc = new Document();
@@ -32,11 +44,21 @@ public class UserCodec implements Codec<UserEntity> {
         documentCodec.encode(writer, doc, encoderContext);
     }
 
+    /**
+     * Get the class of the encoded object.
+     * @return the class of the encoded object
+     */
     @Override
     public Class<UserEntity> getEncoderClass() {
         return UserEntity.class;
     }
 
+    /**
+     * Decode a Document into a UserEntity.
+     * @param reader the reader to use
+     * @param decoderContext the decoder context to use
+     * @return the decoded UserEntity
+     */
     @Override
     public UserEntity decode(BsonReader reader, DecoderContext decoderContext) {
         Document document = documentCodec.decode(reader, decoderContext);

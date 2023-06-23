@@ -15,11 +15,12 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
  * BaseRepository
  */
 public abstract class BaseRepository {
-    @ConfigProperty(name = "greeting.message", defaultValue = "MongEat")
-    String DB_NAME;
+    //@ConfigProperty(name = "greeting.message", defaultValue = "MongEat")
+    String DB_NAME = "MongEat";
 
-    @ConfigProperty(name = "quarkus.mongodb.connection-string", defaultValue = "mongodb://localhost:27017")
-    String CONNECTION_STRING;
+    //@ConfigProperty(name = "quarkus.mongodb.connection-string", defaultValue = "mongodb://localhost:27017")
+    //String CONNECTION_STRING = "mongodb://localhost:27017";
+    String CONNECTION_STRING = "mongodb://React-if-mongeat-Mongodb:27017";
 
     public final MongoDatabase database;
 

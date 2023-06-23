@@ -11,7 +11,7 @@ steps:
   - name: build-docker-api
     image: plugins/docker
     settings:
-      dockerfile: ./Sources/src/main/docker/Dockerfile.native-micro
+      dockerfile: ./Sources/src/main/docker/Dockerfile.native
       context: ./Sources/
       registry: hub.codefirst.iut.uca.fr
       repo: hub.codefirst.iut.uca.fr/valentin.clergue/mongeat

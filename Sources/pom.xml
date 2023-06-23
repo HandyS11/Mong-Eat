@@ -90,12 +90,6 @@
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <container-image>
-            <group>com.mongeat</group>
-            <name>mong-eat</name>
-          </container-image>
-        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -138,7 +132,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.1.2</version> <!-- Utilisez une version valide et disponible -->
+        <version>3.1.2</version>
       </plugin>
     </plugins>
   </build>

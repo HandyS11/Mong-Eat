@@ -186,7 +186,7 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
     @Path("/{id}")
     public Response delete(@PathParam("id") String id) {
         try {
-            service.delete(service.getById(id));
+            service.delete(id);
             return Response.ok().build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)
@@ -204,7 +204,7 @@ public abstract class GenericController<D, DA, M, MA, E extends GenericEntity> {
     @Path("/all")
     public Response deleteAll() {
         try {
-            service.deleteAll(service.getAll());
+            service.deleteAll();
             return Response.ok().build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST)

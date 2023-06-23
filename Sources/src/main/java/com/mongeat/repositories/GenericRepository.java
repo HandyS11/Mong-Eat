@@ -80,19 +80,15 @@ public abstract class GenericRepository<T extends GenericEntity> extends BaseRep
     }
 
     /**
-     * @param entity Entity to delete
+     * @param id Id of the entity Entity to delete
      */
-    public void delete(T entity) {
-        getCollection().deleteOne(eq("_id", new ObjectId(entity.getId())));
+    public void delete(String id) {
+        getCollection().deleteOne(eq("_id", new ObjectId(id)));
     }
 
-    /**
-     * @param entities Entities to delete
-     */
-    public void deleteAll(Collection<T> entities) {
-        for (T entity : entities) {
-            delete(entity);
-        }
+
+    public void deleteAll() {
+        getCollection().drop();
     }
 
     /**

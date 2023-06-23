@@ -98,17 +98,14 @@ public abstract class GenericService<M, MA, E extends GenericEntity> {
     }
 
     /**
-     * @param model Model to replace
+     * @param id Id of the entity
      */
-    public void delete(M model) {
-        repository.delete(converter.toEntity(model));
+    public void delete(String id) {
+        repository.delete(id);
     }
 
-    /**
-     * @param models Models to replace
-     */
-    public void deleteAll(Collection<M> models) {
-        repository.deleteAll(models.stream().map(m -> converter.toEntity(m)).collect(Collectors.toList()));
+    public void deleteAll() {
+        repository.deleteAll();
     }
 
     /**

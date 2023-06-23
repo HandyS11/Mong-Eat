@@ -36,6 +36,9 @@ public abstract class BaseRepository {
 
         CodecRegistry codecRegistry = CodecRegistries.fromRegistries(defaultCodecRegistry, pojoCodecRegistry);
 
+        System.out.println("DB_NAME: " + DB_NAME);
+        System.out.println("CONNECTION_STRING: " + CONNECTION_STRING);
+
         database = MongoClients.create(CONNECTION_STRING)
                                .getDatabase(DB_NAME)
                                .withCodecRegistry(codecRegistry);

@@ -50,7 +50,7 @@ To setup the API quickly we will use [IDEA Intellji](https://www.jetbrains.com/i
 2. Add a configuration to run the `./Sources/src/main/java/com/mongeat/launch/Main.java` main. *(pom will automatically download dependencies)*
 3. Launch the configuration with Java SDK 18 or so
 4. With a browser or Postman, go to `http://localhost:8080/admin/setup`
-5. Feel free to explore the API with [swagger](http://localhost:8080/q/swagger/).
+5. Feel free to explore the API with [swagger](http://localhost:8080/q/swagger-ui/).
 
 ## ✍️ Credits
 

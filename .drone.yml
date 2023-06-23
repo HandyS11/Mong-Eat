@@ -39,7 +39,6 @@ steps:
       CONTAINERNAME: mongeat-Api
       COMMAND: create
       OVERWRITE: true
-      PRIVATE: false
       ADMINS: valentinclergue,mathisribemont
     when:
       branch:

@@ -1,6 +1,7 @@
 package com.mongeat.models.add;
 
 import com.mongeat.models.parts.Location;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @Getter
 @Setter
+@RegisterForReflection
 public class NewUser {
     private String firstName;
     private String lastName;

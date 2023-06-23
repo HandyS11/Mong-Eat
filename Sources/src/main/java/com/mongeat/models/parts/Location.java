@@ -1,5 +1,6 @@
 package com.mongeat.models.parts;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@RegisterForReflection
 public class Location {
     private Address address;
     private Point point;

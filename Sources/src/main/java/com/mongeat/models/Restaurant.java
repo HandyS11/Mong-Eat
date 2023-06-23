@@ -2,6 +2,7 @@ package com.mongeat.models;
 
 import com.mongeat.models.parts.Category;
 import com.mongeat.models.parts.Location;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.util.List;
  */
 @Getter
 @Setter
+@RegisterForReflection
 public class Restaurant extends GenericModel {
     private String name;
     private String image;

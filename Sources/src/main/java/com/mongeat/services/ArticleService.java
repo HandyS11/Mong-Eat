@@ -10,6 +10,9 @@ import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Singleton
 public class ArticleService extends GenericService<Article, NewArticle, ArticleEntity> {
     @Inject
@@ -22,7 +25,7 @@ public class ArticleService extends GenericService<Article, NewArticle, ArticleE
         setAddConverter(new NewArticleConverter());
     }
 
-    public Article findByName(String name) {
-        return converter.toModel(articleRepository.findByName(name));
+    public List<Article> findByName(String name) {
+        return articleRepository.findByName(name).stream().map(a -> converter.toModel(a)).collect(Collectors.toList());
     }
 }

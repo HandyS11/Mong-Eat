@@ -12,6 +12,7 @@ import com.mongeat.repositories.RestaurantRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -67,12 +68,10 @@ public class RestaurantService extends GenericService<Restaurant, NewRestaurant,
     }
 
     private List<Article> getArticlesFromRestaurant(RestaurantEntity restaurant) {
-        List<Article> articles = new ArrayList<>();
-        restaurant.getArticles().forEach(articleId -> articles.add(articleConverter.toModel(articleRepository.findById(articleId))));
-        return articles;
+        return restaurant.getArticles().stream().map(a -> articleConverter.toModel(articleRepository.findById(a))).collect(Collectors.toList());
     }
 
-    public Restaurant findByName(String name) {
-        return converter.toModel(restaurantRepository.findByName(name));
+    public List<Restaurant> findByName(String name) {
+        return restaurantRepository.findByName(name).stream().map(r -> converter.toModel(r)).collect(Collectors.toList());
     }
 }

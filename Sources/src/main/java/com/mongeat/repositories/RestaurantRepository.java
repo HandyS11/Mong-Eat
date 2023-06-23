@@ -2,9 +2,12 @@ package com.mongeat.repositories;
 
 import com.mongeat.entities.RestaurantEntity;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 import jakarta.inject.Singleton;
+import org.bson.conversions.Bson;
 
-import static com.mongodb.client.model.Filters.regex;
+import java.util.ArrayList;
+import java.util.List;
 
 @Singleton
 public class RestaurantRepository extends GenericRepository<RestaurantEntity> {
@@ -14,7 +17,8 @@ public class RestaurantRepository extends GenericRepository<RestaurantEntity> {
         return database.getCollection(RestaurantEntity.COLLECTION_NAME, RestaurantEntity.class);
     }
 
-    public RestaurantEntity findByName(String name) {
-        return getCollection().find(regex("name", name, "i")).first();
+    public List<RestaurantEntity> findByName(String name) {
+        Bson filter = Filters.regex("name", name.trim(), "i");
+        return getCollection().find(filter).into(new ArrayList<>());
     }
 }

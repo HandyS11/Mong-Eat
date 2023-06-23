@@ -1,6 +1,7 @@
 package com.mongeat.dtos.add;
 
 import com.mongeat.dtos.parts.LocationDto;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @Getter
 @Setter
+@RegisterForReflection
 public class NewOrderDto {
     private String status;
     private double price;

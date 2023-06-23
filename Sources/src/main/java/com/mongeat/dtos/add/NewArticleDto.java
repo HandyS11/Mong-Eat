@@ -1,5 +1,6 @@
 package com.mongeat.dtos.add;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@RegisterForReflection
 public class NewArticleDto {
     private String name;
     private String image;

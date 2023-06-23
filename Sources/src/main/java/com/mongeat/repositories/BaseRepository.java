@@ -9,13 +9,17 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  * BaseRepository
  */
 public abstract class BaseRepository {
-    static final String DB_NAME = "MongEat";
-    static final String CONNECTION_STRING = "mongodb://localhost:27017";
+    @ConfigProperty(name = "greeting.message", defaultValue = "MongEat")
+    String DB_NAME;
+
+    @ConfigProperty(name = "quarkus.mongodb.connection-string", defaultValue = "mongodb://localhost:27017")
+    String CONNECTION_STRING;
 
     public final MongoDatabase database;
 

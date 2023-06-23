@@ -2,6 +2,7 @@ package com.mongeat.dtos;
 
 import com.mongeat.dtos.parts.CategoryDto;
 import com.mongeat.dtos.parts.LocationDto;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.util.List;
  */
 @Getter
 @Setter
+@RegisterForReflection
 public class RestaurantDto extends GenericDto {
     private String name;
     private String image;

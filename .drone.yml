@@ -7,7 +7,6 @@ trigger:
     - push
 
 steps:
-  # Build
   - name: build-docker-api
     image: plugins/docker
     settings:
@@ -20,12 +19,11 @@ steps:
       password:
         from_secret: SECRET_REGISTRY_PASSWORD
 
-  # Database
   - name: deploy-container-mongodb
     image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-dockerproxy-clientdrone:latest
     environment:
       IMAGENAME: mongo
-      CONTAINERNAME: React_if-mongeat_mongodb
+      CONTAINERNAME: reactIf-mongeatMongodb
       COMMAND: create
       OVERWRITE: true
       PRIVATE: true
@@ -33,14 +31,12 @@ steps:
     when:
       branch:
         - master
-    #depends_on: [ build-docker-api ]
 
-  # Api
   - name: deploy-api-container
     image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-dockerproxy-clientdrone:latest
     environment:
       IMAGENAME: hub.codefirst.iut.uca.fr/valentin.clergue/mongeat
-      CONTAINERNAME: mongeat-api
+      CONTAINERNAME: reactIf-mongeatApi
       COMMAND: create
       OVERWRITE: true
       PRIVATE: true

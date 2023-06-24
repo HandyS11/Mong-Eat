@@ -59,8 +59,6 @@ To setup the API quickly we will use [IDEA Intellji](https://www.jetbrains.com/i
 
 <details><summary> Structure </summary>
 
-</details>
-
 ```mermaid
 classDiagram
 
@@ -84,12 +82,9 @@ class Repository {
 Repository --> Codec
 Repository .. Entity
 ```
-
+</details>
 
 <details><summary> Controllers </summary>
-
-
-</details>
 
 ```mermaid
 classDiagram
@@ -98,10 +93,23 @@ class GenericController~D, DA, M, MA, E~ {
     # setService(@NonNull GenericService~M_MA_E~ service)
     # setMapper(@NonNull GenericMapper~M_D~ mapper)
     # setPostMapper(@NonNull GenericPostMapper~MA_DA~ postMapper)
+    + getById(String id) Response
+    + getAll() Response
+    + getPaginated(int page, int limit) Response
+    + insert(DA dto) Response
+    + insertAll(Collection~DA~ dtos) Response
+    + update(DA dto) Response
+    + updateAll(Collection~DA~ dtos) Response
+    + delete(String id) Response
+    + deleteAll() Response
+    + drop() Response
+    + exists(String id) Response
+    + getCount() Response
 }
+GenericController --> "1" GenericService~M, MA, E~
 
 class ArticleController {
-    
+    + getByName(String name) Response
 }
 GenericController <|.. ArticleController
 
@@ -111,15 +119,126 @@ class OrderController {
 GenericController <|.. OrderController
 
 class RestaurantController {
-    
+    + getByName(String name) Response
 }
 GenericController <|.. RestaurantController
 
 class UserController {
-    
+    + getByName(String name) Response
 }
 GenericController <|.. UserController
+
+class AdminController {
+    + loadStub(String entity) Response
+    + drop(String entity) Response
+    + setup() Response
+}
 ```
+</details>
+
+<details><summary> Services </summary>
+
+```mermaid
+classDiagram
+
+class GenericService~M, MA, E~ {
+    # setRepository(GenericRepository~E~ repository)
+    # setConverter(GenericConverter~M_E~ converter)
+    # setPostConverter(GenericPostConverter~MA_E~ postConverter)
+    + getById(String id) ~M~
+    + getAll() ~Collection~M~~
+    + getPaginated(int page, int limit) ~Collection~M~~
+    + insert(M model)
+    + insertAll(Collection~M~ models)
+    + update(M model)
+    + updateAll(Collection~M~ models)
+    + delete(String id)
+    + deleteAll()
+    + exists(String id) Boolean
+    + getCount() Long
+}
+GenericService --> "1" GenericRepository~E~
+
+class ArticleService~Article, NewArticle, ArticleEntity~ {
+    + findByRestaurantId(String id) List~Article~
+}
+GenericService <|.. ArticleService
+
+class OrderService~Order, NewOrder, OrderEntity~ {
+    + @Override getById(String id) ~Order~
+    + @Override getAll() ~Collection~Order~~
+    - getArticlesFromOrder(OrderEntity order) List~Article~
+}
+GenericService <|.. OrderService
+
+class RestaurantService~Restaurant, NewRestaurant, RestaurantEntity~ {
+    + @Override getById(String id) ~Restaurant~
+    + @Override getAll() ~Collection~Restaurant~~
+    + findByName(String name) List~Restaurant~
+    - getArticlesFromRestaurant(RestaurantEntity restaurant) List~Article~
+}
+GenericService <|.. RestaurantService
+
+class UserService~User, NewUser, UserEntity~ {
+    + findByName(String name) List~User~
+}
+GenericService <|.. UserService
+
+class AdminService {
+    + drop(String type)
+    + creadeStube(String type) Boolean
+    + setup() Boolean
+}
+BaseRepository <|.. AdminService
+```
+</details>
+
+<details><summary> Repositories </summary>
+
+```mermaid
+classDiagram
+
+class GenericRepository~E~ {
+    + getCollection()* MongoCollection~E~
+    + findById(String id) ~E~
+    + getAll() ~Collection~E~~
+    + gePaginated(int page, int limit) ~Collection~E~~
+    + insert(E entity)
+    + insterAll(Collection~E~ entities)
+    + update(E entity)
+    + updateAll(Collection~E~ entities)
+    + delete(String id)
+    + deleteAll()
+    + exists(String id) Boolean
+    + count() Long
+}
+BaseRepository <|.. GenericRepository
+
+class ArticleRepository~ArticleEntity~ {
+    + @Override getCollection()* MongoCollection~ArticleEntity~
+    + findByName(String name) List~ArticleEntity~
+}
+GenericRepository <|.. ArticleRepository
+
+class OrderRepository~OrderEntity~ {
+    + @Override getCollection()* MongoCollection~OrderEntity~
+}
+GenericRepository <|.. OrderRepository
+
+class RestaurantRepository~RestaurantEntity~ {
+    + @Override getCollection()* MongoCollection~RestaurantEntity~
+    + findByName(String name) List~RestaurantEntity~
+}
+GenericRepository <|.. RestaurantRepository
+
+class UserRepository~UserEntity~ {
+    + @Override getCollection()* MongoCollection~UserEntity~
+    + findByName(String name) List~UserEntity~
+}
+GenericRepository <|.. UserRepository
+```
+</details>
+
 
 ## ✍️ Credits
 

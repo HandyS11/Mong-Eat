@@ -53,6 +53,8 @@ To setup the API quickly we will use [IDEA Intellji](https://www.jetbrains.com/i
 4. With a browser or Postman, go to `http://localhost:8080/admin/setup`
 5. Feel free to explore the API with [swagger](http://localhost:8080/q/swagger-ui/).
 
+You can also use the `./Documentation/API/Mong-eat.postman_collection.json` file to import the API in Postman.
+
 ### Architecture
 
 > Theses diagrams are not fully accurate and only gave the global idea of the conception.

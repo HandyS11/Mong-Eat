@@ -6,7 +6,8 @@ A Quarkus API for a MongoDB database.
 
 ## 📝 Purpose
 
-...
+- Create a [Quakus](https://quarkus.io) API using a [MongoDB](https://www.mongodb.com/) database.
+- Implement the CRUD operations to manage a *food delivery service*.
 
 ## 🛠 Languages & tools
 
@@ -14,7 +15,7 @@ A Quarkus API for a MongoDB database.
 
 ## 🖊️ Versions 
 
-- [Java SDK](https://www.java.com/): 19
+- [Java SDK](https://www.java.com/): 17
 - [Quarkus](https://quarkus.io): 3
 
 ## MongoDB
@@ -48,9 +49,101 @@ To setup the API quickly we will use [IDEA Intellji](https://www.jetbrains.com/i
 
 1. Open `./Sources/` as a project
 2. Add a configuration to run the `./Sources/src/main/java/com/mongeat/launch/Main.java` main. *(pom will automatically download dependencies)*
-3. Launch the configuration with Java SDK 18 or so
+3. Launch the configuration with Java SDK 17 or newer
 4. With a browser or Postman, go to `http://localhost:8080/admin/setup`
 5. Feel free to explore the API with [swagger](http://localhost:8080/q/swagger-ui/).
+
+### Architecture
+
+> Theses diagrams are not fully accurate and only gave the global idea of the conception.
+
+<details><summary> Structure </summary>
+
+</details>
+
+```mermaid
+classDiagram
+
+class Controller {
+    
+}
+Controller --> Service
+Controller --> Mapper~D, M~
+Controller .. Dto
+
+class Service {
+    
+}
+Service --> Repository
+Service --> Converter~M, E~
+Service .. Model
+
+class Repository {
+    
+}
+Repository --> Codec
+Repository .. Entity
+
+class Dto {
+    
+}
+
+class Model {
+    
+}
+
+class Entity {
+    
+}
+
+class Mapper~D, M~ {
+    
+}
+
+class Converter~M, E~ {
+    
+}
+
+class Codec {
+
+}
+```
+
+
+<details><summary> Controllers </summary>
+
+
+</details>
+
+```mermaid
+classDiagram
+
+class GenericController~D, DA, M, MA, E~ {
+    # setService(@NonNull GenericService~M_MA_E~ service)
+    # setMapper(@NonNull GenericMapper~M_D~ mapper)
+    # setPostMapper(@NonNull GenericPostMapper~MA_DA~ postMapper)
+}
+
+class ArticleController {
+    
+}
+GenericController <|.. ArticleController
+
+class OrderController {
+    
+}
+GenericController <|.. OrderController
+
+class RestaurantController {
+    
+}
+GenericController <|.. RestaurantController
+
+class UserController {
+    
+}
+GenericController <|.. UserController
+```
 
 ## ✍️ Credits
 

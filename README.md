@@ -83,30 +83,6 @@ class Repository {
 }
 Repository --> Codec
 Repository .. Entity
-
-class Dto {
-    
-}
-
-class Model {
-    
-}
-
-class Entity {
-    
-}
-
-class Mapper~D, M~ {
-    
-}
-
-class Converter~M, E~ {
-    
-}
-
-class Codec {
-
-}
 ```
 
 

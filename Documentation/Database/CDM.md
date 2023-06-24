@@ -1,13 +1,14 @@
-## CDM Explainations
+## CDM
 
 Quick explanations of the **CDM**
 
 > Please note that the *Mongo collections* are available [here](./Collections.md).
 
-### CDM
+### CDM diagram
 
 ![CDM](./CDM.png)
 
-### Entities description
+### Entities
 
-*__TODO:__ ...*
+The **fake_id** field is used to represent a reference to an object.
+It does not belongs in the mongo collection itself.

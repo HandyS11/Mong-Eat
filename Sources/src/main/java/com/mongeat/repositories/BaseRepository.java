@@ -19,8 +19,8 @@ public abstract class BaseRepository {
     String DB_NAME = "MongEat";
 
     //@ConfigProperty(name = "quarkus.mongodb.connection-string", defaultValue = "mongodb://localhost:27017")
-    String CONNECTION_STRING = "mongodb://localhost:27017";
-    //String CONNECTION_STRING = "mongodb://React-if-mongeat-Mongodb:27017";
+    //String CONNECTION_STRING = "mongodb://localhost:27017";
+    String CONNECTION_STRING = "mongodb://React-if-mongeat-Mongodb:27017";
 
     public final MongoDatabase database;
 
@@ -37,8 +37,8 @@ public abstract class BaseRepository {
 
         CodecRegistry codecRegistry = CodecRegistries.fromRegistries(defaultCodecRegistry, pojoCodecRegistry);
 
-        System.out.println("DB_NAME: " + DB_NAME);
-        System.out.println("CONNECTION_STRING: " + CONNECTION_STRING);
+        //System.out.println("DB_NAME: " + DB_NAME);
+        //System.out.println("CONNECTION_STRING: " + CONNECTION_STRING);
 
         database = MongoClients.create(CONNECTION_STRING)
                                .getDatabase(DB_NAME)

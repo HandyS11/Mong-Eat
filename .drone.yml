@@ -41,7 +41,7 @@ steps:
       IMAGENAME: hub.codefirst.iut.uca.fr/valentin.clergue/mongeat
       CONTAINERNAME: mongeat-Api
       COMMAND: create
-      OVERWRITE: true
+      OVERWRITE: false
       ADMINS: valentinclergue,mathisribemont
     when:
       branch:

@@ -67,21 +67,46 @@ class Controller {
 }
 Controller --> Service
 Controller --> Mapper~D, M~
-Controller .. Dto
 
 class Service {
     
 }
 Service --> Repository
 Service --> Converter~M, E~
-Service .. Model
 
 class Repository {
     
 }
 Repository --> Codec
-Repository .. Entity
+
+class Mapper~D, M~ {
+    
+}
+Mapper .. DTO
+Mapper .. Model
+
+class Converter~M, E~ {
+    
+}
+Converter .. Model
+Converter .. Entity
 ```
+
+This API is implement following the Controller -> Service -> Repository architecture.
+* Controllers:
+    - Handle the HTTP requests
+    - Call the services
+    - Return the responses
+* Services:
+    - Handle the business logic
+    - Call the repositories
+* Repositories:
+    - Handle the database access
+    - Call the codecs
+
+To interact through the layers and convert **DTOs** to **Models** and **Models** to **Entities**, we use mappers and converters.
+It allows us to keep the layers independant and to have a better control over the data.
+It allows improve the code readability and maintainability.
 </details>
 
 <details><summary> Controllers </summary>
@@ -134,6 +159,11 @@ class AdminController {
     + setup() Response
 }
 ```
+
+The controllers are the entry point of the API.
+- They handle the HTTP requests
+- They call the services
+- They return the responses
 </details>
 
 <details><summary> Services </summary>
@@ -191,6 +221,10 @@ class AdminService {
 }
 BaseRepository <|.. AdminService
 ```
+
+The services are the core of the API.
+- They handle the business logic
+- They call the repositories
 </details>
 
 <details><summary> Repositories </summary>
@@ -237,6 +271,10 @@ class UserRepository~UserEntity~ {
 }
 GenericRepository <|.. UserRepository
 ```
+
+The repositories are the link between the API and the database.
+- They handle the database access
+- They call the codecs
 </details>
 
 

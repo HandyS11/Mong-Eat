@@ -76,13 +76,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/{{ARTICLE_PATH}}/648b3d0a263a7897b3099e70",
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/64705dcabd367e78ccaddbe0",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
 								"{{ARTICLE_PATH}}",
-								"648b3d0a263a7897b3099e70"
+								"64705dcabd367e78ccaddbe0"
 							]
 						}
 					},
@@ -128,6 +128,25 @@
 									"key": "limit",
 									"value": "2"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{ARTICLE_PATH}}/byName/Hot",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{ARTICLE_PATH}}",
+								"byName",
+								"Hot"
 							]
 						}
 					},
@@ -628,6 +647,25 @@
 					"response": []
 				},
 				{
+					"name": "GetByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{RESTAURANT_PATH}}/byName/pat",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{RESTAURANT_PATH}}",
+								"byName",
+								"pat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "PostEntity",
 					"request": {
 						"method": "POST",
@@ -875,6 +913,25 @@
 					"response": []
 				},
 				{
+					"name": "GetByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/{{USER_PATH}}/byName/Vale",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"{{USER_PATH}}",
+								"byName",
+								"Vale"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "PostEntity",
 					"request": {
 						"method": "POST",
@@ -1101,6 +1158,12 @@
 			"key": "HOST",
 			"value": "localhost:8080",
 			"type": "string"
+		},
+		{
+			"key": "HOST",
+			"value": "https://codefirst.iut.uca.fr/containers/React-if-mongeat-Api",
+			"type": "string",
+			"disabled": true
 		}
 	]
 }

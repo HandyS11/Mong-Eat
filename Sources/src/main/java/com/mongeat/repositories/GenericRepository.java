@@ -3,6 +3,7 @@ package com.mongeat.repositories;
 import com.mongeat.entities.GenericEntity;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.ReplaceOptions;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -14,6 +15,7 @@ import static com.mongodb.client.model.Filters.eq;
 /**
  * GenericRepository
  */
+@ApplicationScoped
 public abstract class GenericRepository<T extends GenericEntity> extends BaseRepository {
 
     /**

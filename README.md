@@ -49,9 +49,10 @@ To setup the API quickly we will use [IDEA Intellji](https://www.jetbrains.com/i
 
 1. Open `./Sources/` as a project
 2. Add a configuration to run the `./Sources/src/main/java/com/mongeat/launch/Main.java` main. *(pom will automatically download dependencies)*
-3. Launch the configuration with Java SDK 17 or newer
-4. With a browser or Postman, go to `http://localhost:8080/admin/setup`
-5. Feel free to explore the API with [swagger](http://localhost:8080/q/swagger-ui/).
+3. Go to `./Sources/src/main/resources/application.properties` and change the `quarkus.mongodb.connection-string` to your MongoDB connection string
+4. Launch the configuration with Java SDK 17 or newer
+5. With a browser or Postman, go to `http://localhost:8080/admin/setup`
+6. Feel free to explore the API with [swagger](http://localhost:8080/q/swagger-ui/)
 
 You can also use the `./Documentation/API/Mong-eat.postman_collection.json` file to import the API in Postman.
 

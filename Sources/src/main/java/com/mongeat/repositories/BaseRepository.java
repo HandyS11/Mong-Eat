@@ -7,20 +7,18 @@ import com.mongeat.codec.UserCodec;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.config.ConfigProvider;
 
 /**
  * BaseRepository
  */
+@ApplicationScoped
 public abstract class BaseRepository {
-    //@ConfigProperty(name = "greeting.message", defaultValue = "MongEat")
-    String DB_NAME = "MongEat";
-
-    //@ConfigProperty(name = "quarkus.mongodb.connection-string", defaultValue = "mongodb://localhost:27017")
-    //String CONNECTION_STRING = "mongodb://localhost:27017";
-    String CONNECTION_STRING = "mongodb://React-if-mongeat-Mongodb:27017";
+    private final String DB_NAME = ConfigProvider.getConfig().getValue("quarkus.mongodb.database", String.class);
+    private final String CONNECTION_STRING = ConfigProvider.getConfig().getValue("quarkus.mongodb.connection-string", String.class);
 
     public final MongoDatabase database;
 
@@ -36,9 +34,6 @@ public abstract class BaseRepository {
                 new UserCodec());
 
         CodecRegistry codecRegistry = CodecRegistries.fromRegistries(defaultCodecRegistry, pojoCodecRegistry);
-
-        //System.out.println("DB_NAME: " + DB_NAME);
-        //System.out.println("CONNECTION_STRING: " + CONNECTION_STRING);
 
         database = MongoClients.create(CONNECTION_STRING)
                                .getDatabase(DB_NAME)
